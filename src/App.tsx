@@ -1080,7 +1080,7 @@ const FreshersPortalMain: React.FC = () => {
       greetingWord = "Good Afternoon";
     } else if (hour >= 17 && hour < 22) {
       greetingWord = "Good Evening";
-    } else if (hour >= 22 || hour < 5) {
+    } else if (hour >= 22 && hour < 5) {
       greetingWord = "Good Night";
     }
     
