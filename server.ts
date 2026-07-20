@@ -24,6 +24,7 @@ import {
   dbGetRecommendations,
   dbSeedAll
 } from "./src/db/helpers.ts";
+import { initMysql, verifyMysqlUser } from "./src/db/mysql.ts";
 
 // Load environment variables (dotenv is handled automatically in the environment, but good for local)
 import * as dotenv from "dotenv";
@@ -48,6 +49,26 @@ async function startServer() {
   // 1. Health check endpoint
   app.get("/api/health", (req, res) => {
     res.json({ status: "healthy", timestamp: new Date() });
+  });
+
+  // 1.5 MySQL Authentication Endpoint
+  app.post("/api/auth/login", async (req, res) => {
+    try {
+      const { email, userid, password } = req.body;
+      if ((!email && !userid) || !password) {
+        return res.status(400).json({ error: "User ID/Email and Password are required." });
+      }
+
+      const user = await verifyMysqlUser(userid, email, password);
+      if (!user) {
+        return res.status(401).json({ error: "Invalid User ID/Email or Password." });
+      }
+
+      res.json({ success: true, user });
+    } catch (error: any) {
+      console.error("Error in POST /api/auth/login:", error);
+      res.status(500).json({ error: error.message || "Failed to authenticate user via MySQL" });
+    }
   });
 
   // Helper middleware to optionally extract Firebase user (non-blocking)
@@ -811,6 +832,13 @@ RULES FOR CHAT BOT RESPONSES:
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
+  }
+
+  // Initialize and seed MySQL database on startup
+  try {
+    await initMysql();
+  } catch (error) {
+    console.error("[MYSQL WARNING] Error during initialization of MySQL:", error);
   }
 
   // Seed database contents on startup (uses onConflictDoNothing)
