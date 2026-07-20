@@ -1,7 +1,7 @@
-import { db } from './index.ts';
+﻿import { db } from './index.ts';
 import { users, events, registrations, clubs, clubMembers, faculty, courses, studentCourses, checklists, userChecklists, locations, feedbacks } from './schema.ts';
 import { eq, and, desc } from 'drizzle-orm';
-import { FacultyMember } from '../types.ts';
+import { FacultyMember } from '../../src/types.ts';
 
 // --- IN-MEMORY FALLBACK STORES & HELPERS ---
 function hashCode(str: string): number {
