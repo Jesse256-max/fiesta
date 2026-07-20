@@ -1,4 +1,4 @@
-﻿import express from "express";
+import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type, ThinkingLevel, Modality } from "@google/genai";
@@ -821,6 +821,8 @@ RULES FOR CHAT BOT RESPONSES:
   // Serve static files inside dist/ in production, and configure Vite in development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
+      configFile: path.join(process.cwd(), "Frontend", "vite.config.ts"),
+      root: path.join(process.cwd(), "Frontend"),
       server: { middlewareMode: true },
       appType: "spa",
     });
