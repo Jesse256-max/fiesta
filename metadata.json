@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Remix: Techn",
+  "description": "An AI-powered central campus portal for events, clubs, faculty directory, timetables, registration checklists, and a smart assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
