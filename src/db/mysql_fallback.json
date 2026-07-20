@@ -1,0 +1,42 @@
+[
+  {
+    "userid": "student1",
+    "password": "Password123!",
+    "name": "John Doe",
+    "dob": "2004-05-15",
+    "email": "john.doe@technotrons.edu",
+    "phone": "+1234567890"
+  },
+  {
+    "userid": "student2",
+    "password": "SecurePass789!",
+    "name": "Jane Smith",
+    "dob": "2003-08-22",
+    "email": "jane.smith@technotrons.edu",
+    "phone": "+1987654321"
+  },
+  {
+    "userid": "student3",
+    "password": "TechUser456!",
+    "name": "Bob Johnson",
+    "dob": "2004-11-02",
+    "email": "bob.johnson@technotrons.edu",
+    "phone": "+1122334455"
+  },
+  {
+    "userid": "student4",
+    "password": "AdminStudent#1",
+    "name": "Alice Brown",
+    "dob": "2003-01-30",
+    "email": "alice.brown@technotrons.edu",
+    "phone": "+1555666777"
+  },
+  {
+    "userid": "student5",
+    "password": "FreshersRule$",
+    "name": "Charlie Green",
+    "dob": "2004-07-12",
+    "email": "charlie.green@technotrons.edu",
+    "phone": "+1999888777"
+  }
+]
