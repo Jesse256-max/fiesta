@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import * as fs from 'fs';
 import * as path from 'path';
+import crypto from 'crypto';
 
 // Connection configurations
 const config = {
@@ -14,7 +15,7 @@ const config = {
 
 let pool: mysql.Pool | null = null;
 let useFallback = false;
-const fallbackFilePath = path.join(process.cwd(), 'src', 'db', 'mysql_fallback.json');
+const fallbackFilePath = path.join(process.cwd(), 'Backend', 'db', 'mysql_fallback.json');
 
 // Loaded fallback data in case connection fails
 let fallbackData: any[] = [];
@@ -25,6 +26,11 @@ try {
   }
 } catch (err) {
   console.error('[MYSQL MOCK] Error reading initial fallback JSON:', err);
+}
+
+// Function to hash a password using SHA-256
+export function hashPassword(password: string): string {
+  return crypto.createHash('sha256').update(password).digest('hex');
 }
 
 // Function to initialize MySQL database and verify/create table & seeds
@@ -82,7 +88,22 @@ export async function initMysql() {
       await pool.query(insertQuery, [values]);
       console.log('[MYSQL] Successfully seeded 5 users.');
     } else {
-      console.log('[MYSQL] Database already contains records. Skipping seed.');
+      console.log('[MYSQL] Database already contains records. Verifying if password migration is required...');
+      const [userRows]: any = await pool.query('SELECT id, password FROM mysql_users');
+      let migratedCount = 0;
+      for (const row of userRows) {
+        const isHashed = /^[0-9a-fA-F]{64}$/.test(row.password);
+        if (!isHashed) {
+          const hashed = hashPassword(row.password);
+          await pool.query('UPDATE mysql_users SET password = ? WHERE id = ?', [hashed, row.id]);
+          migratedCount++;
+        }
+      }
+      if (migratedCount > 0) {
+        console.log(`[MYSQL] Successfully migrated ${migratedCount} passwords to SHA-256 secure hashes.`);
+      } else {
+        console.log('[MYSQL] All passwords in active database are already hashed.');
+      }
     }
   } catch (error: any) {
     console.warn('\n[MYSQL WARNING] Failed to initialize MySQL Server connection:', error.message);
@@ -95,7 +116,7 @@ export async function initMysql() {
 export async function verifyMysqlUser(userid: string, email: string, passwordToVerify: string) {
   const cleanUserid = (userid || '').trim().toLowerCase();
   const cleanEmail = (email || '').trim().toLowerCase();
-  const cleanPassword = passwordToVerify || '';
+  const hashedPassword = hashPassword(passwordToVerify || '');
 
   if (useFallback || !pool) {
     console.log('[MYSQL ENGINE: FALLBACK] Verifying credentials via Local JSON fallback store...');
@@ -103,7 +124,7 @@ export async function verifyMysqlUser(userid: string, email: string, passwordToV
     const matchedUser = fallbackData.find(u => {
       const dbUserid = (u.userid || '').toLowerCase();
       const dbEmail = (u.email || '').toLowerCase();
-      return (dbUserid === cleanUserid || dbEmail === cleanEmail) && u.password === cleanPassword;
+      return (dbUserid === cleanUserid || dbEmail === cleanEmail) && u.password === hashedPassword;
     });
 
     if (!matchedUser) {
@@ -129,7 +150,7 @@ export async function verifyMysqlUser(userid: string, email: string, passwordToV
       WHERE (LOWER(userid) = ? OR LOWER(email) = ?) AND password = ?
       LIMIT 1
     `;
-    const [rows]: any = await pool.query(selectQuery, [cleanUserid, cleanEmail, cleanPassword]);
+    const [rows]: any = await pool.query(selectQuery, [cleanUserid, cleanEmail, hashedPassword]);
     
     if (rows.length === 0) {
       return null;

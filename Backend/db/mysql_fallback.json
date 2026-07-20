@@ -1,7 +1,7 @@
 [
   {
     "userid": "student1",
-    "password": "Password123!",
+    "password": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
     "name": "John Doe",
     "dob": "2004-05-15",
     "email": "john.doe@technotrons.edu",
@@ -9,7 +9,7 @@
   },
   {
     "userid": "student2",
-    "password": "SecurePass789!",
+    "password": "bc9d388aab195c065591a7d8364ee75c4b2625cdff10e7775eff2de0f7c8be39",
     "name": "Jane Smith",
     "dob": "2003-08-22",
     "email": "jane.smith@technotrons.edu",
@@ -17,7 +17,7 @@
   },
   {
     "userid": "student3",
-    "password": "TechUser456!",
+    "password": "a2569dd99ce8b41e0a2318af9f51327b4a7b225b003426c9b640d75708107628",
     "name": "Bob Johnson",
     "dob": "2004-11-02",
     "email": "bob.johnson@technotrons.edu",
@@ -25,7 +25,7 @@
   },
   {
     "userid": "student4",
-    "password": "AdminStudent#1",
+    "password": "fdae6c0e7f334d55e2a4f6082dbe594b43dd52d504ed3b97768bc1f549e5e105",
     "name": "Alice Brown",
     "dob": "2003-01-30",
     "email": "alice.brown@technotrons.edu",
@@ -33,7 +33,7 @@
   },
   {
     "userid": "student5",
-    "password": "FreshersRule$",
+    "password": "d06ffb109b2996773bfe0f5b866afa92d21a7d56e048818dd58052fbd1e97e6f",
     "name": "Charlie Green",
     "dob": "2004-07-12",
     "email": "charlie.green@technotrons.edu",
