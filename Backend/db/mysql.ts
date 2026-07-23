@@ -239,3 +239,98 @@ export async function verifyMysqlUser(userid: string, email: string, passwordToV
   }
 }
 
+export interface RegisterUserData {
+  userid: string;
+  email: string;
+  password: string;
+  name: string;
+  dob: string;
+  phone: string;
+}
+
+// Function to register a new user in MySQL database
+export async function registerMysqlUser(data: RegisterUserData) {
+  const cleanUserid = (data.userid || '').trim();
+  const cleanEmail = (data.email || '').trim().toLowerCase();
+  const cleanName = (data.name || '').trim();
+  const cleanDob = (data.dob || '').trim();
+  const cleanPhone = (data.phone || '').trim();
+  const rawPassword = data.password || '';
+
+  if (!cleanUserid || !cleanEmail || !rawPassword || !cleanName || !cleanDob || !cleanPhone) {
+    throw new Error('All fields (Name, Email, User ID, Password, Date of Birth, Phone) are required.');
+  }
+
+  if (rawPassword.length > 12) {
+    throw new Error('Password must not exceed 12 characters.');
+  }
+
+  const hashedPassword = hashPassword(rawPassword);
+
+  if (useFallback || !pool) {
+    console.log('[MYSQL ENGINE: FALLBACK] Registering new user in local JSON fallback store...');
+    const existing = fallbackData.find(
+      u => (u.userid || '').toLowerCase() === cleanUserid.toLowerCase() || (u.email || '').toLowerCase() === cleanEmail
+    );
+    if (existing) {
+      throw new Error('User ID or Email is already registered in the database.');
+    }
+
+    const newUser = {
+      userid: cleanUserid,
+      password: hashedPassword,
+      name: cleanName,
+      dob: cleanDob,
+      email: cleanEmail,
+      phone: cleanPhone
+    };
+
+    fallbackData.push(newUser);
+    try {
+      fs.writeFileSync(fallbackFilePath, JSON.stringify(fallbackData, null, 2), 'utf8');
+    } catch (err: any) {
+      console.warn('[MYSQL MOCK] Warning updating fallback JSON file:', err.message);
+    }
+
+    return {
+      userid: cleanUserid,
+      name: cleanName,
+      dob: cleanDob,
+      email: cleanEmail,
+      phone: cleanPhone
+    };
+  }
+
+  // Real MySQL Database connection pool
+  try {
+    console.log('[MYSQL ENGINE: ACTIVE] Registering new user in active MySQL database...');
+    // Check if userid or email already exists
+    const [existingRows]: any = await pool.query(
+      'SELECT id FROM mysql_users WHERE LOWER(userid) = ? OR LOWER(email) = ? LIMIT 1',
+      [cleanUserid.toLowerCase(), cleanEmail]
+    );
+
+    if (existingRows.length > 0) {
+      throw new Error('User ID or Email is already registered in the database.');
+    }
+
+    const insertQuery = `
+      INSERT INTO mysql_users (userid, password, name, dob, email, phone)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    await pool.query(insertQuery, [cleanUserid, hashedPassword, cleanName, cleanDob, cleanEmail, cleanPhone]);
+
+    return {
+      userid: cleanUserid,
+      name: cleanName,
+      dob: cleanDob,
+      email: cleanEmail,
+      phone: cleanPhone
+    };
+  } catch (error: any) {
+    console.error('[MYSQL ERROR] User registration failed:', error.message);
+    throw error;
+  }
+}
+
+

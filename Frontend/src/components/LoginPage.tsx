@@ -18,7 +18,10 @@ import {
   CheckCircle2,
   HelpCircle,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  UserPlus,
+  Calendar,
+  Phone
 } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground.tsx";
 
@@ -184,7 +187,7 @@ const MainframeLogo: React.FC<MainframeLogoProps> = ({ isAuthenticating }) => {
 };
 
 export const LoginPage: React.FC = () => {
-  const { loginLocally, loginAsGuest, loginWithGoogle, savedInfo, clearSavedInfo } = useAuth();
+  const { loginLocally, registerUser, loginAsGuest, loginWithGoogle, savedInfo, clearSavedInfo } = useAuth();
 
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -236,6 +239,66 @@ export const LoginPage: React.FC = () => {
   const [formError, setFormError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // Create New Account Modal states
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [regName, setRegName] = useState("");
+  const [regEmail, setRegEmail] = useState("");
+  const [regUserid, setRegUserid] = useState("");
+  const [regPassword, setRegPassword] = useState("");
+  const [regDob, setRegDob] = useState("");
+  const [regPhone, setRegPhone] = useState("");
+  const [regError, setRegError] = useState<string | null>(null);
+  const [regSuccess, setRegSuccess] = useState<string | null>(null);
+  const [regLoading, setRegLoading] = useState(false);
+
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRegError(null);
+    setRegSuccess(null);
+
+    if (!regName.trim() || !regEmail.trim() || !regUserid.trim() || !regPassword || !regDob || !regPhone.trim()) {
+      setRegError("Please fill out all registration fields.");
+      return;
+    }
+
+    if (!regEmail.includes("@")) {
+      setRegError("Please enter a valid email address.");
+      return;
+    }
+
+    if (regPassword.length > 12) {
+      setRegError("Password must not exceed 12 characters.");
+      return;
+    }
+
+    setRegLoading(true);
+    try {
+      await registerUser({
+        name: regName.trim(),
+        email: regEmail.trim(),
+        userid: regUserid.trim(),
+        password: regPassword,
+        dob: regDob.trim(),
+        phone: regPhone.trim()
+      });
+
+      setRegSuccess("Account registered successfully in MySQL database! Auto-filling login form...");
+      setEmail(regEmail.trim());
+      setBatchNo(regUserid.trim());
+      setPassword(regPassword);
+      setRememberMe(true);
+
+      setTimeout(() => {
+        setIsRegisterOpen(false);
+        setRegSuccess(null);
+      }, 1800);
+    } catch (err: any) {
+      setRegError(err.message || "Failed to create account in MySQL database.");
+    } finally {
+      setRegLoading(false);
+    }
+  };
+
   // Recovery modal states
   const [recoveryType, setRecoveryType] = useState<"password" | "login" | null>(null);
   const [recoveryEmail, setRecoveryEmail] = useState("");
@@ -244,6 +307,7 @@ export const LoginPage: React.FC = () => {
   const [recoveryErrorMessage, setRecoveryErrorMessage] = useState<string | null>(null);
   const [newLocalPassword, setNewLocalPassword] = useState("");
   const [passwordResetApplied, setPasswordResetApplied] = useState(false);
+
 
   // Suggested Demo Student accounts
   const demoStudents = [
@@ -625,6 +689,19 @@ export const LoginPage: React.FC = () => {
                     {loading ? "Authenticating..." : "Log In"}
                   </button>
 
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setRegError(null);
+                      setRegSuccess(null);
+                      setIsRegisterOpen(true);
+                    }}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold py-3.5 rounded-xl cursor-pointer transition-all active:scale-98 shadow-lg shadow-emerald-600/15 flex items-center justify-center gap-2"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    Create New Account
+                  </button>
+
                   <div className="flex items-center justify-between text-xs text-zinc-400 dark:text-zinc-500 font-mono py-1">
                     <hr className="border-zinc-200 dark:border-white/5 flex-1" />
                     <span className="px-3">OR GUEST BYPASS</span>
@@ -662,7 +739,176 @@ export const LoginPage: React.FC = () => {
 
       </main>
 
+      {/* CREATE NEW ACCOUNT REGISTRATION MODAL */}
+      <AnimatePresence>
+        {isRegisterOpen && (
+          <div className="fixed inset-0 bg-zinc-950/70 dark:bg-zinc-950/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[90vh] text-left text-zinc-800 dark:text-zinc-100 transition-colors"
+            >
+              {/* Modal Header */}
+              <div className="p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50 dark:bg-zinc-950/40 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                    <UserPlus className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white leading-tight">
+                      Create New Account
+                    </h3>
+                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono tracking-wide uppercase mt-0.5">
+                      Register details into MySQL database
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsRegisterOpen(false)}
+                  className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 rounded-xl cursor-pointer transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Form Content */}
+              <div className="p-6 overflow-y-auto space-y-4 flex-grow text-xs leading-relaxed text-zinc-600 dark:text-zinc-300 transition-colors">
+                {regError && (
+                  <div className="p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-750 dark:text-red-300 rounded-xl flex items-center gap-2">
+                    <AlertCircle className="w-4.5 h-4.5 shrink-0 text-red-500" />
+                    <span>{regError}</span>
+                  </div>
+                )}
+
+                {regSuccess && (
+                  <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 text-emerald-850 dark:text-emerald-200 rounded-xl flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                    <span>{regSuccess}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
+                  {/* Name */}
+                  <div>
+                    <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5 text-emerald-500" />
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. John Doe"
+                      value={regName}
+                      onChange={(e) => setRegName(e.target.value)}
+                      className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                      required
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                      <Mail className="w-3.5 h-3.5 text-emerald-500" />
+                      E-mail Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="e.g. john.doe@technotrons.edu"
+                      value={regEmail}
+                      onChange={(e) => setRegEmail(e.target.value)}
+                      className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                      required
+                    />
+                  </div>
+
+                  {/* User ID */}
+                  <div>
+                    <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-emerald-500" />
+                      User ID
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. student101"
+                      value={regUserid}
+                      onChange={(e) => setRegUserid(e.target.value)}
+                      className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                      required
+                    />
+                  </div>
+
+                  {/* Password (Max 12 chars) */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <Lock className="w-3.5 h-3.5 text-emerald-500" />
+                        Password (Max 12 chars)
+                      </label>
+                      <span className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500">
+                        {regPassword.length}/12
+                      </span>
+                    </div>
+                    <input
+                      type="password"
+                      maxLength={12}
+                      placeholder="••••••••••••"
+                      value={regPassword}
+                      onChange={(e) => setRegPassword(e.target.value)}
+                      className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                      required
+                    />
+                  </div>
+
+                  {/* Date of Birth & Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                        Date of Birth
+                      </label>
+                      <input
+                        type="date"
+                        value={regDob}
+                        onChange={(e) => setRegDob(e.target.value)}
+                        className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <Phone className="w-3.5 h-3.5 text-emerald-500" />
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+1234567890"
+                        value={regPhone}
+                        onChange={(e) => setRegPhone(e.target.value)}
+                        className="w-full bg-zinc-50 dark:bg-zinc-950/40 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500 transition-colors"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={regLoading}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3 rounded-xl cursor-pointer transition-all active:scale-98 shadow-md flex items-center justify-center gap-2 mt-2"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    {regLoading ? "Saving to MySQL..." : "Register Account"}
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* RECOVERY MODALS */}
+
       <AnimatePresence>
         {recoveryType && (
           <div className="fixed inset-0 bg-zinc-950/70 dark:bg-zinc-950/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">

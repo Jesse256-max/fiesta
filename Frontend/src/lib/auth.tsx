@@ -13,8 +13,9 @@ interface AuthContextType {
   refreshUserSync: () => Promise<void>;
   
   // Local Auth Extensions
-  localUser: { email: string; batchNo: string; name: string; isGuest: boolean; department?: string } | null;
+  localUser: { email: string; batchNo: string; name: string; isGuest: boolean; department?: string; dob?: string; phone?: string } | null;
   loginLocally: (email: string, batchNo: string, password: string, saveInfo: boolean) => Promise<void>;
+  registerUser: (userData: { userid: string; email: string; password: string; name: string; dob: string; phone: string }) => Promise<any>;
   loginAsGuest: () => void;
   savedInfo: { email: string; batchNo: string; password: string; saved: boolean } | null;
   clearSavedInfo: () => void;
@@ -118,34 +119,70 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const loginLocally = async (email: string, batchNo: string, password: string, saveInfo: boolean) => {
+  const loginLocally = async (emailOrUserid: string, batchNo: string, password: string, saveInfo: boolean) => {
     setLoading(true);
     try {
-      // Create a student name based on email prefix or custom formatting
-      const cleanEmail = email.trim();
-      const emailPrefix = cleanEmail.split("@")[0];
-      const displayName = emailPrefix.charAt(0).toUpperCase() + emailPrefix.slice(1);
+      // Authenticate via MySQL backend API
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailOrUserid, userid: batchNo || emailOrUserid, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Access denied. Only registered MySQL database accounts can access the portal.");
+      }
+
+      const dbUserObj = data.user;
+      const cleanEmail = dbUserObj.email || emailOrUserid;
+      const cleanUserid = dbUserObj.userid || batchNo;
+      const displayName = dbUserObj.name || cleanUserid;
       
       const u = {
         email: cleanEmail,
-        batchNo: batchNo.trim(),
-        name: `${displayName} (${batchNo.trim()})`,
-        isGuest: false
+        batchNo: cleanUserid,
+        name: displayName,
+        isGuest: false,
+        dob: dbUserObj.dob,
+        phone: dbUserObj.phone
       };
 
       setLocalUser(u);
       localStorage.setItem("technotrons_local_user", JSON.stringify(u));
 
       if (saveInfo) {
-        const info = { email: cleanEmail, batchNo: batchNo.trim(), password, saved: true };
+        const info = { email: cleanEmail, batchNo: cleanUserid, password, saved: true };
         setSavedInfo(info);
         localStorage.setItem("technotrons_saved_login", JSON.stringify(info));
       } else {
         setSavedInfo(null);
         localStorage.removeItem("technotrons_saved_login");
       }
-    } catch (error) {
-      console.error("Local login failed:", error);
+    } catch (error: any) {
+      console.error("MySQL Login failed:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const registerUser = async (userData: { userid: string; email: string; password: string; name: string; dob: string; phone: string }) => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to create account in MySQL database.");
+      }
+      return data;
+    } catch (error: any) {
+      console.error("MySQL Registration failed:", error);
       throw error;
     } finally {
       setLoading(false);
@@ -210,6 +247,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         refreshUserSync,
         localUser,
         loginLocally,
+        registerUser,
         loginAsGuest,
         savedInfo,
         clearSavedInfo,
@@ -220,6 +258,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     </AuthContext.Provider>
   );
 };
+
 
 export const useAuth = () => {
   const context = useContext(AuthContext);

@@ -24,7 +24,7 @@ import {
   dbGetRecommendations,
   dbSeedAll
 } from "./db/helpers.ts";
-import { initMysql, verifyMysqlUser } from "./db/mysql.ts";
+import { initMysql, verifyMysqlUser, registerMysqlUser } from "./db/mysql.ts";
 
 // Load environment variables (dotenv is handled automatically in the environment, but good for local)
 import * as dotenv from "dotenv";
@@ -51,6 +51,26 @@ async function startServer() {
     res.json({ status: "healthy", timestamp: new Date() });
   });
 
+  // 1.4 MySQL User Registration Endpoint
+  app.post("/api/auth/register", async (req, res) => {
+    try {
+      const { userid, email, password, name, dob, phone } = req.body;
+      if (!userid || !email || !password || !name || !dob || !phone) {
+        return res.status(400).json({ error: "All fields are required (Name, Email, User ID, Password, Date of Birth, Phone)." });
+      }
+
+      if (password.length > 12) {
+        return res.status(400).json({ error: "Password must not exceed 12 characters." });
+      }
+
+      const user = await registerMysqlUser({ userid, email, password, name, dob, phone });
+      res.json({ success: true, message: "Account created successfully! You can now log in.", user });
+    } catch (error: any) {
+      console.error("Error in POST /api/auth/register:", error);
+      res.status(400).json({ error: error.message || "Failed to register user account." });
+    }
+  });
+
   // 1.5 MySQL Authentication Endpoint
   app.post("/api/auth/login", async (req, res) => {
     try {
@@ -61,7 +81,7 @@ async function startServer() {
 
       const user = await verifyMysqlUser(userid, email, password);
       if (!user) {
-        return res.status(401).json({ error: "Invalid User ID/Email or Password." });
+        return res.status(401).json({ error: "Invalid User ID/Email or Password. Only accounts in the MySQL database can access the portal." });
       }
 
       res.json({ success: true, user });
@@ -70,6 +90,7 @@ async function startServer() {
       res.status(500).json({ error: error.message || "Failed to authenticate user via MySQL" });
     }
   });
+
 
   // Helper middleware to optionally extract Firebase user (non-blocking)
   const optionalAuth = async (req: AuthRequest, res: express.Response, next: express.NextFunction) => {
