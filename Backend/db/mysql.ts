@@ -28,9 +28,61 @@ try {
   console.error('[MYSQL MOCK] Error reading initial fallback JSON:', err);
 }
 
-// Function to hash a password using SHA-256
-export function hashPassword(password: string): string {
+// Security Password Hashing Algorithm Implementation using scrypt + random salt
+
+/**
+ * Hashes a password using scrypt with a cryptographically secure 16-byte random salt.
+ * Returns formatted string: "<saltHex>:<derivedKeyHex>"
+ */
+export function hashPassword(password: string, salt?: string): string {
+  const saltBuf = salt ? Buffer.from(salt, 'hex') : crypto.randomBytes(16);
+  const derivedKey = crypto.scryptSync(password, saltBuf, 64);
+  return `${saltBuf.toString('hex')}:${derivedKey.toString('hex')}`;
+}
+
+/**
+ * Computes legacy unsalted SHA-256 hash for backward compatibility.
+ */
+export function hashPasswordLegacy(password: string): string {
   return crypto.createHash('sha256').update(password).digest('hex');
+}
+
+/**
+ * Verifies a plain-text password against a stored password hash using timing-safe comparison.
+ * Supports scrypt salted format (<salt>:<hash>), legacy SHA-256 (64 hex characters), and plain text.
+ */
+export function verifyPassword(passwordToVerify: string, storedHash: string): boolean {
+  if (!storedHash || !passwordToVerify) return false;
+
+  // 1. Check scrypt format (<saltHex>:<keyHex>)
+  if (storedHash.includes(':')) {
+    const parts = storedHash.split(':');
+    if (parts.length !== 2) return false;
+    const [saltHex, keyHex] = parts;
+    
+    try {
+      const saltBuf = Buffer.from(saltHex, 'hex');
+      const targetBuf = Buffer.from(keyHex, 'hex');
+      const derivedBuf = crypto.scryptSync(passwordToVerify, saltBuf, targetBuf.length);
+
+      if (targetBuf.length !== derivedBuf.length) return false;
+      return crypto.timingSafeEqual(targetBuf, derivedBuf);
+    } catch {
+      return false;
+    }
+  }
+
+  // 2. Legacy unsalted SHA-256 format (64 hex characters)
+  if (/^[0-9a-fA-F]{64}$/.test(storedHash)) {
+    const legacyHash = hashPasswordLegacy(passwordToVerify);
+    const targetBuf = Buffer.from(storedHash, 'hex');
+    const legacyBuf = Buffer.from(legacyHash, 'hex');
+    if (targetBuf.length !== legacyBuf.length) return false;
+    return crypto.timingSafeEqual(targetBuf, legacyBuf);
+  }
+
+  // 3. Direct plaintext fallback (e.g. unhashed initial mock records)
+  return storedHash === passwordToVerify;
 }
 
 // Function to initialize MySQL database and verify/create table & seeds
@@ -72,37 +124,41 @@ export async function initMysql() {
     const count = rows[0]?.count || 0;
 
     if (count === 0) {
-      console.log('[MYSQL] Seeding 5 initial users into MySQL database...');
+      console.log('[MYSQL] Seeding 5 initial users into MySQL database with scrypt secure password hashes...');
       const insertQuery = `
         INSERT INTO mysql_users (userid, password, name, dob, email, phone)
         VALUES ?
       `;
-      const values = fallbackData.map(u => [
-        u.userid,
-        u.password,
-        u.name,
-        u.dob,
-        u.email,
-        u.phone
-      ]);
+      const values = fallbackData.map(u => {
+        // Hash password with scrypt if it isn't already formatted as scrypt <salt>:<hash>
+        const hashedPassword = u.password.includes(':') ? u.password : hashPassword(u.password);
+        return [
+          u.userid,
+          hashedPassword,
+          u.name,
+          u.dob,
+          u.email,
+          u.phone
+        ];
+      });
       await pool.query(insertQuery, [values]);
-      console.log('[MYSQL] Successfully seeded 5 users.');
+      console.log('[MYSQL] Successfully seeded 5 users with scrypt password hashes.');
     } else {
-      console.log('[MYSQL] Database already contains records. Verifying if password migration is required...');
+      console.log('[MYSQL] Database already contains records. Verifying if password migration to scrypt is required...');
       const [userRows]: any = await pool.query('SELECT id, password FROM mysql_users');
       let migratedCount = 0;
       for (const row of userRows) {
-        const isHashed = /^[0-9a-fA-F]{64}$/.test(row.password);
-        if (!isHashed) {
-          const hashed = hashPassword(row.password);
-          await pool.query('UPDATE mysql_users SET password = ? WHERE id = ?', [hashed, row.id]);
+        // Migrate records that are not yet in scrypt salted format (<salt>:<hash>)
+        if (!row.password.includes(':')) {
+          const scryptHashed = hashPassword(row.password);
+          await pool.query('UPDATE mysql_users SET password = ? WHERE id = ?', [scryptHashed, row.id]);
           migratedCount++;
         }
       }
       if (migratedCount > 0) {
-        console.log(`[MYSQL] Successfully migrated ${migratedCount} passwords to SHA-256 secure hashes.`);
+        console.log(`[MYSQL] Successfully migrated ${migratedCount} passwords to scrypt secure salted hashes.`);
       } else {
-        console.log('[MYSQL] All passwords in active database are already hashed.');
+        console.log('[MYSQL] All passwords in active database are already stored as secure scrypt hashes.');
       }
     }
   } catch (error: any) {
@@ -116,7 +172,6 @@ export async function initMysql() {
 export async function verifyMysqlUser(userid: string, email: string, passwordToVerify: string) {
   const cleanUserid = (userid || '').trim().toLowerCase();
   const cleanEmail = (email || '').trim().toLowerCase();
-  const hashedPassword = hashPassword(passwordToVerify || '');
 
   if (useFallback || !pool) {
     console.log('[MYSQL ENGINE: FALLBACK] Verifying credentials via Local JSON fallback store...');
@@ -124,14 +179,15 @@ export async function verifyMysqlUser(userid: string, email: string, passwordToV
     const matchedUser = fallbackData.find(u => {
       const dbUserid = (u.userid || '').toLowerCase();
       const dbEmail = (u.email || '').toLowerCase();
-      return (dbUserid === cleanUserid || dbEmail === cleanEmail) && u.password === hashedPassword;
+      const isMatch = (dbUserid === cleanUserid || dbEmail === cleanEmail);
+      if (!isMatch) return false;
+      return verifyPassword(passwordToVerify, u.password);
     });
 
     if (!matchedUser) {
       return null;
     }
 
-    // Format DOB to YYYY-MM-DD
     return {
       userid: matchedUser.userid,
       name: matchedUser.name,
@@ -145,20 +201,41 @@ export async function verifyMysqlUser(userid: string, email: string, passwordToV
   try {
     console.log('[MYSQL ENGINE: ACTIVE] Verifying credentials via active MySQL database connection...');
     const selectQuery = `
-      SELECT userid, name, DATE_FORMAT(dob, "%Y-%m-%d") as dob, email, phone 
+      SELECT id, userid, password, name, DATE_FORMAT(dob, "%Y-%m-%d") as dob, email, phone 
       FROM mysql_users 
-      WHERE (LOWER(userid) = ? OR LOWER(email) = ?) AND password = ?
+      WHERE LOWER(userid) = ? OR LOWER(email) = ?
       LIMIT 1
     `;
-    const [rows]: any = await pool.query(selectQuery, [cleanUserid, cleanEmail, hashedPassword]);
+    const [rows]: any = await pool.query(selectQuery, [cleanUserid, cleanEmail]);
     
     if (rows.length === 0) {
       return null;
     }
-    
-    return rows[0];
+
+    const userRow = rows[0];
+    const isPasswordValid = verifyPassword(passwordToVerify, userRow.password);
+
+    if (!isPasswordValid) {
+      return null;
+    }
+
+    // Auto-upgrade legacy stored password format to scrypt upon successful login
+    if (!userRow.password.includes(':')) {
+      const newScryptHash = hashPassword(passwordToVerify);
+      try {
+        await pool.query('UPDATE mysql_users SET password = ? WHERE id = ?', [newScryptHash, userRow.id]);
+        console.log(`[MYSQL] Automatically upgraded password for user "${userRow.userid}" to secure scrypt format.`);
+      } catch (upgErr: any) {
+        console.warn(`[MYSQL WARNING] Failed to auto-upgrade password for user "${userRow.userid}":`, upgErr.message);
+      }
+    }
+
+    delete userRow.password;
+    delete userRow.id;
+    return userRow;
   } catch (error: any) {
     console.error('[MYSQL ERROR] Failed to query mysql_users table:', error.message);
     throw new Error('Database query failure during authentication.');
   }
 }
+
