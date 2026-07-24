@@ -164,7 +164,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const loginAsGuest = () => {
     const u = {
-      email: "guest@technotrons.edu",
+      email: "student@saranathan.ac.in",
       batchNo: "GUEST",
       name: "Guest Student",
       isGuest: true

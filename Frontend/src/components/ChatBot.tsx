@@ -12,10 +12,10 @@ interface SavedQuery {
 }
 
 const SUGGESTIONS = [
-  "What is the dress code for the Welcome Party?",
-  "Where is Prof. Alan Turing's office?",
-  "Show my registration steps",
-  "Tell me about student clubs"
+  "Where is Dr. D. Valavan's Principal office?",
+  "Tell me about Saranathan IEEE & Infosys Campus Connect",
+  "What is TNEA Counseling Code & UGC status?",
+  "Where is the Central Library & CSG GPU Lab?"
 ];
 
 export const ChatBot: React.FC = () => {
@@ -39,7 +39,7 @@ export const ChatBot: React.FC = () => {
       {
         id: "welcome",
         role: "assistant",
-        content: "Hello! I am your Technotrons College of Engineering AI Guide. Ask me anything about campus events, student clubs, timetables, academic faculty, or registration steps!",
+        content: "Hello! I am your Saranathan College of Engineering AI Assistant. Ask me anything about campus events, student clubs, timetables, academic faculty, TNEA counselling code 2615, or central library services!",
         timestamp: new Date()
       }
     ];

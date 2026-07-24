@@ -3,7 +3,7 @@ from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Technotrons Student Portal API"
+    PROJECT_NAME: str = "Saranathan Student Portal API"
     API_V1_STR: str = "/api"
     SECRET_KEY: str = os.getenv("SECRET_KEY", "supersecretkey_change_in_production")
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")

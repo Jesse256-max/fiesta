@@ -20,49 +20,49 @@ import {
 export const CampusAdministration: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"principal" | "campus" | "structure">("principal");
 
-  // Key stats
+  // Key stats for Saranathan College of Engineering
   const stats = [
-    { label: "Established", value: "1996" },
-    { label: "Campus Size", value: "50+ Acres" },
-    { label: "High-Tech Labs", value: "45+" },
-    { label: "Smart Classrooms", value: "100%" },
-    { label: "NIRF Ranking", value: "Top 50" },
-    { label: "Alumni Network", value: "15,000+" }
+    { label: "Established", value: "1998" },
+    { label: "Campus Size", value: "40+ Acres" },
+    { label: "NAAC Grade", value: "A+ Grade" },
+    { label: "UGC Status", value: "Autonomous" },
+    { label: "TNEA Code", value: "2615" },
+    { label: "Alumni Network", value: "20,000+" }
   ];
 
   const pillars = [
-    { title: "Academic Excellence", desc: "Rigorous research-driven curriculum aligned with global engineering standards.", icon: GraduationCap, color: "text-indigo-500 bg-indigo-500/10" },
-    { title: "Pioneering Innovation", desc: "Incubating dynamic student startups with $2M+ seed funding directly on-campus.", icon: Lightbulb, color: "text-amber-500 bg-amber-500/10" },
-    { title: "Ethical Responsibility", desc: "Instilling deep societal accountability and green energy engineering paradigms.", icon: BookmarkCheck, color: "text-emerald-500 bg-emerald-500/10" }
+    { title: "Academic Excellence", desc: "UGC Autonomous curriculum aligned with NBA standards across all eligible departments.", icon: GraduationCap, color: "text-indigo-500 bg-indigo-500/10" },
+    { title: "E-Yantra & EDC Innovation", desc: "IIT Bombay backed robotics laboratory and Entrepreneurship Development Cell incubation.", icon: Lightbulb, color: "text-amber-500 bg-amber-500/10" },
+    { title: "Value Based Education", desc: "Instilling deep ethical responsibility and holistic student empowerment founded by Auditor Shri K. Santhanam.", icon: BookmarkCheck, color: "text-emerald-500 bg-emerald-500/10" }
   ];
 
   const buildings = [
     {
-      name: "Sir C. V. Raman Academic Block",
-      type: "Academic & Tech Lab",
-      floors: "G + 5 Floors",
-      desc: "Houses Computer Science, Electrical Engineering, the central mainframe room, and advanced hardware prototyping hubs.",
-      image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600"
-    },
-    {
-      name: "Visvesvaraya Administrative Block",
-      type: "Administration",
+      name: "Central Administrative Complex",
+      type: "Administration & Auditorium",
       floors: "G + 3 Floors",
-      desc: "Contains the Principal's Office, Academic Registrar, accounts desk, hostel warden liaison, and primary freshman help desks.",
+      desc: "Contains the Principal's Office, Academic Registrar, accounts desk, hostel warden liaison, and the air-conditioned Silver Jubilee Auditorium.",
       image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600"
     },
     {
-      name: "Srinivasa Ramanujan Library",
-      type: "Digital & Research Resource",
+      name: "Computer Support Group (CSG Block)",
+      type: "Academic & GPU Research Lab",
       floors: "G + 4 Floors",
-      desc: "Contains over 120,000 physical titles, 24/7 quiet air-conditioned pods, IEEE digital catalog access, and private debate salons.",
+      desc: "Houses Computer Science & Engineering, IT, AI&DS, high-speed GPU server labs, and the Infosys Campus Connect training hall.",
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600"
+    },
+    {
+      name: "Central Library & Digital Resource Center",
+      type: "Digital & Academic Resource",
+      floors: "G + 2 Floors",
+      desc: "Houses over 50,000 physical volumes, IEEE digital journal subscriptions, quiet study pods, and book bank facilities.",
       image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=600"
     },
     {
-      name: "TCE Incubation & StartUp Hub",
-      type: "Research & Startup",
+      name: "E-Yantra Robotics & EDC Incubation Center",
+      type: "Research & Startup Hub",
       floors: "G + 2 Floors",
-      desc: "Dedicated workspaces for active student startups, venture capitalism mentoring tables, and 3D additive printing maker spaces.",
+      desc: "Dedicated collaborative workspaces for IIT Bombay robotics project development, startup incubation, and patent drafting.",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600"
     }
   ];
@@ -79,10 +79,10 @@ export const CampusAdministration: React.FC = () => {
             ★ campus administration & directory
           </span>
           <h2 className="font-display font-black text-2xl sm:text-3xl tracking-tight text-white leading-none">
-            Technotrons College of Engineering
+            Saranathan College of Engineering
           </h2>
           <p className="text-zinc-200 text-xs leading-relaxed max-w-xl">
-            Administered by academic pioneers and tech visionaries, TCE coordinates state-of-the-art campus learning to prepare students for global research and technology careers.
+            UGC Autonomous Institution • NAAC 'A+' Accredited • All 7 eligible UG branches NBA Accredited (TNEA Code 2615, Trichy).
           </p>
         </div>
       </div>
@@ -133,8 +133,8 @@ export const CampusAdministration: React.FC = () => {
                 <div className="relative">
                   <div className="w-28 h-28 rounded-full bg-indigo-50 dark:bg-zinc-950 border-2 border-indigo-500 p-1 shadow-md">
                     <img 
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=250" 
-                      alt="Dr. G. K. Technotron" 
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" 
+                      alt="Dr. D. Valavan" 
                       className="w-full h-full object-cover rounded-full"
                       referrerPolicy="no-referrer"
                     />
@@ -145,9 +145,9 @@ export const CampusAdministration: React.FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="font-display font-black text-lg text-zinc-900 dark:text-white">Dr. G. K. Technotron</h3>
-                  <p className="text-xs text-indigo-600 dark:text-indigo-400 font-bold">Principal & Chief Admin Director</p>
-                  <p className="text-[10px] text-zinc-400 font-mono">B.E, M.Tech, Ph.D. (MIT • Computer Engineering)</p>
+                  <h3 className="font-display font-black text-lg text-zinc-900 dark:text-white">Dr. D. Valavan</h3>
+                  <p className="text-xs text-indigo-600 dark:text-indigo-400 font-bold">Principal & Professor</p>
+                  <p className="text-[10px] text-zinc-400 font-mono">B.E., M.E., Ph.D. (Mechanical Engineering)</p>
                 </div>
               </div>
 
@@ -155,19 +155,19 @@ export const CampusAdministration: React.FC = () => {
               <div className="border-t border-zinc-150 dark:border-zinc-800 mt-5 pt-4 space-y-3 text-xs text-zinc-600 dark:text-zinc-300">
                 <div className="flex items-center gap-2.5">
                   <MapPin className="w-4 h-4 text-zinc-400 shrink-0" />
-                  <span>Room 101, 1st Floor, Admin Block</span>
+                  <span>Principal Office, Admin Block</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Mail className="w-4 h-4 text-zinc-400 shrink-0" />
-                  <span className="font-mono text-[11px]">principal@technotrons.edu</span>
+                  <span className="font-mono text-[11px]">principal@saranathan.ac.in</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-zinc-400 shrink-0" />
-                  <span className="font-mono text-[11px]">+1 (555) 700-1101 (Direct)</span>
+                  <span className="font-mono text-[11px]">+91-8489915214 / +91-8489915224</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-zinc-400 shrink-0" />
-                  <span>Public Hours: Mon & Wed, 2:00 PM – 4:00 PM</span>
+                  <span>Public Hours: Mon – Fri, 10:00 AM – 05:00 PM</span>
                 </div>
               </div>
             </div>
@@ -179,35 +179,34 @@ export const CampusAdministration: React.FC = () => {
                   Welcome Address
                 </span>
                 <h3 className="font-display font-black text-xl text-zinc-900 dark:text-white tracking-tight leading-tight">
-                  "Empowering the Future with High-Performance Technical Rigor"
+                  "Educate, Empower & Employ - Transforming Engineering Education"
                 </h3>
               </div>
 
               <div className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed space-y-4">
                 <p>
-                  Dear Freshmen of the 2026 Academic Cohort,
+                  Dear Students & Aspirants,
                 </p>
                 <p>
-                  It is my absolute privilege to welcome you to the <strong>Technotrons College of Engineering</strong>. You are embarking on a magnificent four-year scholastic odyssey that will fundamentally reshape your analytical capabilities, technical competencies, and societal insights.
+                  It gives me immense pleasure to welcome you to <strong>Saranathan College of Engineering</strong>, Tiruchirappalli. Conferred with 10-year UGC Autonomous status and accredited with NAAC 'A+' grade, our institution stands as a beacon of academic rigor and industry-aligned innovation.
                 </p>
                 <p>
-                  At TCE, we do not simply teach engineering; we build high-precision systems. Our classrooms are smart environments, our faculty are active developers and leading publishers, and our dynamic, canvas-infused portal provides an elegant platform to handle your courses, track attendance, and connect with academic peers.
+                  With all 7 eligible engineering disciplines reaccredited by the National Board of Accreditation (NBA), we provide our students with world-class computing facilities, Infosys Campus Connect training, IIT Bombay e-Yantra robotics research labs, and an active Entrepreneurship Development Cell.
                 </p>
                 <p>
-                  I urge you to make full use of our Sir C. V. Raman academic computing facilities, register for student clubs to build team excellence, and complete your registration milestones. Our administration remains entirely committed to facilitating your absolute success.
+                  I encourage every student to utilize our campus digital portal to access course schedules, track academic milestones, participate in IEEE student activities, and engage in high-impact technological learning.
                 </p>
                 <p className="italic text-zinc-500 pt-1">
-                  Warm regards and best wishes,
-                  <br />
-                  <strong className="text-zinc-900 dark:text-white not-italic block mt-1">Dr. G. K. Technotron</strong>
-                  <span className="text-xs text-zinc-400 block font-mono">Principal, Technotrons College of Engineering</span>
+                  Warm regards and best wishes,<br />
+                  <strong>Dr. D. Valavan</strong><br />
+                  <span className="text-xs">Principal, Saranathan College of Engineering</span>
                 </p>
               </div>
             </div>
           </motion.div>
         )}
 
-        {/* PANEL 2: CAMPUS STATISTICS & VISION PILLARS */}
+        {/* PANEL 2: CAMPUS VISION */}
         {activeTab === "campus" && (
           <motion.div
             key="campus"
@@ -216,41 +215,30 @@ export const CampusAdministration: React.FC = () => {
             exit={{ opacity: 0 }}
             className="space-y-6"
           >
-            {/* Quick Stats Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              {stats.map((st) => (
-                <div key={st.label} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl text-center shadow-md">
-                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider font-mono">{st.label}</p>
-                  <p className="text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono mt-1">{st.value}</p>
+            {/* Stats row */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {stats.map((s, idx) => (
+                <div key={idx} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 text-center shadow-md">
+                  <div className="font-display font-black text-xl text-indigo-600 dark:text-indigo-400">{s.value}</div>
+                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold">{s.label}</div>
                 </div>
               ))}
             </div>
 
-            {/* Core Pillars */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-              {pillars.map((p) => {
+            {/* Pillars */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {pillars.map((p, idx) => {
                 const Icon = p.icon;
                 return (
-                  <div key={p.title} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl shadow-lg space-y-3.5">
-                    <div className={`w-10 h-10 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
+                  <div key={idx} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-xl space-y-3">
+                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${p.color}`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h4 className="font-display font-bold text-sm text-zinc-900 dark:text-white">{p.title}</h4>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed">{p.desc}</p>
+                    <h4 className="font-display font-bold text-base text-zinc-900 dark:text-white">{p.title}</h4>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">{p.desc}</p>
                   </div>
                 );
               })}
-            </div>
-
-            {/* General Campus Overview Text */}
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl shadow-lg space-y-4">
-              <h4 className="font-display font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
-                <Globe className="w-5 h-5 text-indigo-500" />
-                History & Strategic Vision
-              </h4>
-              <p className="text-zinc-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed">
-                Founded in 1996 with just two engineering streams and 120 students, Technotrons College of Engineering has grown into a world-class institute of engineering, technology, and applied research. Accredited with a prestigious 'A++' Grade, our campus hosts ultra-high-speed internet terminals, specialized materials laboratories, and private research cells designed to address global industrial dilemmas.
-              </p>
             </div>
           </motion.div>
         )}
@@ -264,50 +252,25 @@ export const CampusAdministration: React.FC = () => {
             exit={{ opacity: 0 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {buildings.map((b) => (
-              <div 
-                key={b.name} 
-                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl flex flex-col sm:flex-row items-stretch"
-              >
-                {/* Visual Thumbnail */}
-                <div className="sm:w-1/3 min-h-[140px] bg-zinc-100 dark:bg-zinc-950 relative">
-                  <img 
-                    src={b.image} 
-                    alt={b.name} 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-transparent to-zinc-900/10 pointer-events-none" />
+            {buildings.map((b, idx) => (
+              <div key={idx} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl flex flex-col sm:flex-row">
+                <div className="sm:w-2/5 h-44 sm:h-auto relative shrink-0">
+                  <img src={b.image} alt={b.name} className="w-full h-full object-cover" />
+                  <span className="absolute top-3 left-3 bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border border-white/20">
+                    {b.type}
+                  </span>
                 </div>
-                {/* Content info */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-2.5">
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[9px] font-bold font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 uppercase">
-                        {b.type}
-                      </span>
-                      <span className="text-[9px] font-mono font-bold text-zinc-400">
-                        {b.floors}
-                      </span>
-                    </div>
-                    <h4 className="font-display font-bold text-sm text-zinc-900 dark:text-white leading-snug">
-                      {b.name}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed">
-                      {b.desc}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-1 text-[10px] font-bold text-indigo-500 hover:text-indigo-600 cursor-pointer">
-                    <span>View Map Coordinates</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                <div className="p-5 sm:w-3/5 space-y-2 flex flex-col justify-between">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-bold">{b.floors}</span>
+                    <h4 className="font-display font-bold text-sm text-zinc-900 dark:text-white">{b.name}</h4>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">{b.desc}</p>
                   </div>
                 </div>
               </div>
             ))}
           </motion.div>
         )}
-
       </AnimatePresence>
     </div>
   );

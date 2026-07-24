@@ -1208,7 +1208,7 @@ const FreshersPortalMain: React.FC = () => {
             </div>
             <div>
               <h1 className="font-display font-black text-sm sm:text-base lg:text-sm xl:text-lg tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5 leading-none">
-                Technotrons <span className="hidden md:inline lg:hidden xl:inline">College of Engineering</span>
+                Saranathan <span className="hidden md:inline lg:hidden xl:inline">College of Engineering</span>
               </h1>
               <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono tracking-wider uppercase leading-none mt-1">
                 CAMPUS PORTAL
@@ -1547,7 +1547,7 @@ const FreshersPortalMain: React.FC = () => {
                           >
                             <div className="space-y-3 relative z-10">
                               <span className="bg-white/10 border border-white/20 text-white font-mono font-bold text-[9px] uppercase px-2.5 py-1 rounded-full shadow-sm tracking-wider">
-                                ★ TECHNOTRONS PORTAL
+                                ★ SARANATHAN CAMPUS PORTAL
                               </span>
                               <h2 className="font-display font-black text-2xl sm:text-3xl leading-tight tracking-tight text-white animate-fade-in">
                                 {getGreeting()}

@@ -80,72 +80,72 @@ export const CampusMap: React.FC<CampusMapProps> = ({ onAskChatbot }) => {
 
   const { token } = useAuth();
 
-  // Simulated live student commuters
+  // Simulated live student commuters (Saranathan Campus)
   const [commuters, setCommuters] = useState<StudentCommuter[]>([
     {
       id: "sanjay",
       name: "Sanjay",
-      role: "GDG President",
+      role: "Infosys Campus Connect Lead",
       avatar: "👨‍💻",
       color: "bg-indigo-500",
       border: "border-indigo-400",
-      startLocId: 1, // Ada Lovelace CS Hall
-      endLocId: 17, // Student Dining Pavilion & Canteen
+      startLocId: 3, // CSG GPU Lab
+      endLocId: 5, // Student Cafeteria
       progress: 0,
       status: "walking",
-      statusText: "Walking to Student Dining Pavilion to grab a hot coffee"
+      statusText: "Walking from CSG GPU Lab to Student Cafeteria for tea & snacks"
     },
     {
       id: "elena",
       name: "Elena",
-      role: "Music Club Lead",
-      avatar: "🎸",
+      role: "Sara Fine Arts Secretary",
+      avatar: "🎵",
       color: "bg-emerald-500",
       border: "border-emerald-400",
-      startLocId: 23, // Open Air Theater
-      endLocId: 20, // Administrative Offices
+      startLocId: 1, // Silver Jubilee Auditorium
+      endLocId: 2, // Central Library
       progress: 20,
       status: "walking",
-      statusText: "Heading to Administrative Offices to submit acoustics gig permits"
+      statusText: "Heading to Central Library to review Sara Cultural Fest guidelines"
     },
     {
-      id: "turing",
-      name: "Prof. Alan",
-      role: "AI Lead Faculty",
+      id: "barathi",
+      name: "Dr. M. Barathi",
+      role: "IEEE Branch Counselor & ECE HOD",
       avatar: "👨‍🏫",
       color: "bg-amber-500",
       border: "border-amber-400",
-      startLocId: 3, // John von Neumann AI & DS Wing
-      endLocId: 16, // Central Library
+      startLocId: 4, // E-Yantra Robotics Research Center
+      endLocId: 1, // Silver Jubilee Auditorium
       progress: 40,
       status: "walking",
-      statusText: "Walking to Central Library to consult generative intelligence archives"
+      statusText: "Walking to Silver Jubilee Auditorium for TechXibitz inaugurations"
     },
     {
       id: "yuki",
       name: "Yuki",
-      role: "Robotics Head",
+      role: "E-Yantra Robotics Lead",
       avatar: "🤖",
       color: "bg-cyan-500",
       border: "border-cyan-400",
-      startLocId: 5, // Robotics & Automation Hub
-      endLocId: 19, // Sports Arena
+      startLocId: 4, // E-Yantra Robotics Research Center
+      endLocId: 6, // Campus Hostel Blocks
       progress: 65,
       status: "walking",
-      statusText: "Carrying telemetry sensors to configure autonomous drone flight paths"
+      statusText: "Carrying IoT sensors from E-Yantra Lab to demonstrate at hostel study hall"
     },
     {
       id: "marcus",
       name: "Marcus",
-      role: "Sports Captain",
+      role: "Saranathan Sports Captain",
       avatar: "🏃",
       color: "bg-rose-500",
       border: "border-rose-400",
-      startLocId: 19, // Sports Arena
-      endLocId: 17, // Student Dining Pavilion & Canteen
+      startLocId: 6, // Campus Hostel Blocks
+      endLocId: 5, // Student Cafeteria
       progress: 85,
       status: "walking",
-      statusText: "Jogging from the Sports Arena to the Student Canteen for refreshments"
+      statusText: "Jogging from Hostel Complex to Student Cafeteria for morning refreshments"
     }
   ]);
 

@@ -299,7 +299,7 @@ export const FacultyList: React.FC<FacultyListProps> = ({ faculty }) => {
                                 </div>
                                 <p className="text-xs text-zinc-300 leading-relaxed font-sans font-medium">
                                   {isLeader 
-                                    ? `${f.name} steers the strategic direction, academic standards, and executive operations as ${f.designation} at Technotrons College of Engineering.`
+                                    ? `${f.name} steers the strategic direction, academic standards, and executive operations as ${f.designation} at Saranathan College of Engineering.`
                                     : `${f.name} is a distinguished ${f.designation.toLowerCase()} in the ${f.department} department. Highly active in undergraduate mentorship and specialized academic initiatives.`
                                   }
                                 </p>
@@ -430,7 +430,7 @@ export const FacultyList: React.FC<FacultyListProps> = ({ faculty }) => {
                           </div>
                           <p className="text-xs text-zinc-300 leading-relaxed font-sans font-medium">
                             {isLeader 
-                              ? `${f.name} steers the strategic direction, academic standards, and executive operations as ${f.designation} at Technotrons College of Engineering.`
+                              ? `${f.name} steers the strategic direction, academic standards, and executive operations as ${f.designation} at Saranathan College of Engineering.`
                               : `${f.name} is a distinguished ${f.designation.toLowerCase()} in the ${f.department} department. Highly active in undergraduate mentorship and specialized academic initiatives.`
                           }
                           </p>
