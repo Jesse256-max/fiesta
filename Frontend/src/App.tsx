@@ -2172,14 +2172,17 @@ const FreshersPortalMain: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav 
-            className="hidden lg:flex items-center gap-2 xl:gap-4 flex-nowrap whitespace-nowrap justify-center py-1"
-          >
+          {/* Top Navigation Bar */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar py-1">
             {[
               { id: "dashboard", label: "Dashboard", icon: Sparkles },
+              { id: "faculty", label: "Faculty Directory", icon: BookOpen },
+              { id: "map", label: "Campus Map", icon: Map },
+              { id: "events", label: "Events & Fest", icon: Calendar },
+              { id: "clubs", label: "Student Clubs", icon: Users },
+              { id: "news", label: "Campus News", icon: Newspaper },
               { id: "timetable", label: "My Timetable", icon: Clock },
-              { id: "checklist", label: "Registration steps", icon: CheckSquare }
+              { id: "checklist", label: "Registration Steps", icon: CheckSquare }
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -2188,8 +2191,8 @@ const FreshersPortalMain: React.FC = () => {
               return (
                 <motion.button
                   key={tab.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => {
                     if (isProtected) {
                       alert(`Please sign in to view your personalized ${tab.label}!`);
@@ -2198,13 +2201,13 @@ const FreshersPortalMain: React.FC = () => {
                       setActiveTab(tab.id as any);
                     }
                   }}
-                  className={`flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 xl:py-2.5 rounded-2xl text-[11px] xl:text-xs font-bold transition-all cursor-pointer border ${
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] xl:text-xs font-bold transition-all cursor-pointer border ${
                     isActive
-                      ? "bg-indigo-600 border-indigo-700 text-white shadow-md shadow-indigo-600/10"
+                      ? "bg-indigo-600 border-indigo-700 text-white shadow-md shadow-indigo-600/20"
                       : "bg-zinc-100/80 dark:bg-zinc-900 border-zinc-200/60 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/80 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5 xl:w-4 xl:h-4 shrink-0" />
+                  <Icon className="w-3.5 h-3.5 shrink-0" />
                   <span>{tab.label}</span>
                 </motion.button>
               );
@@ -2216,17 +2219,17 @@ const FreshersPortalMain: React.FC = () => {
               onMouseLeave={() => setMoreMenuOpen(false)}
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-                className={`flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 xl:py-2.5 rounded-2xl text-[11px] xl:text-xs font-bold transition-all cursor-pointer border ${
-                  ["events", "map", "faculty", "clubs", "support", "settings", "creative", "profile", "administration"].includes(activeTab)
-                    ? "bg-indigo-600 border-indigo-700 text-white shadow-md shadow-indigo-600/10"
+                className={`flex items-center gap-1 px-3 py-2 rounded-xl text-[11px] xl:text-xs font-bold transition-all cursor-pointer border ${
+                  ["support", "settings", "creative", "profile", "administration"].includes(activeTab)
+                    ? "bg-indigo-600 border-indigo-700 text-white shadow-md shadow-indigo-600/20"
                     : "bg-zinc-100/80 dark:bg-zinc-900 border-zinc-200/60 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/80 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
                 }`}
               >
                 <span>More</span>
-                <ChevronDown className={`w-3.5 h-3.5 xl:w-4 xl:h-4 transition-transform duration-200 ${moreMenuOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${moreMenuOpen ? "rotate-180" : ""}`} />
               </motion.button>
 
               <AnimatePresence>
