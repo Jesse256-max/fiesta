@@ -195,6 +195,17 @@ const DEFAULT_FACULTY: FacultyMember[] = [
   },
   {
     id: 9,
+    name: "Ms. T. Nagalakshmi, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "nagalakshmi7160@saranathan.ac.in",
+    office: "CS Block - Room 219",
+    hours: "Mon, Wed 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/nagalakshmi7160.jpg",
+    researchInterests: "Computer Networks, Wireless Communication"
+  },
+  {
+    id: 10,
     name: "Mr. R. Karthik, M.E.",
     designation: "Assistant Professor",
     department: "Computer Science & Engineering",
@@ -204,10 +215,120 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/karthik-cse.jpg",
     researchInterests: "Cyber Security, Embedded Hardware Security"
   },
+  {
+    id: 11,
+    name: "Ms. K. Mohanappriya, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "mohanapriya-cse@saranathan.ac.in",
+    office: "CS Block - Room 222",
+    hours: "Wed, Fri 09:00 AM - 11:00 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mohanapriya-cse.jpg",
+    researchInterests: "Data Structures, Algorithms"
+  },
+  {
+    id: 12,
+    name: "Ms. J. Sathiaparkavi, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "parkavi-cse@saranathan.ac.in",
+    office: "CS Block - Room 224",
+    hours: "Mon, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/parkavi-cse.jpg",
+    researchInterests: "Software Engineering, Cloud Computing"
+  },
+  {
+    id: 13,
+    name: "Ms. E. Shapna Rani, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "shapnarani-cse@saranathan.ac.in",
+    office: "CS Block - Room 225",
+    hours: "Tue, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/shapnarani-cse.jpg",
+    researchInterests: "Machine Learning, Data Mining"
+  },
+  {
+    id: 14,
+    name: "Ms. P. Rohini, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "rohini7133@saranathan.ac.in",
+    office: "CS Block - Room 226",
+    hours: "Wed, Thu 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rohini%207133.jpg",
+    researchInterests: "Image Processing, Artificial Intelligence"
+  },
+  {
+    id: 15,
+    name: "Ms. C. Maria Rhythm, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "mariarhythm7182@saranathan.ac.in",
+    office: "CS Block - Room 228",
+    hours: "Mon, Fri 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mariarhythm7182.jpg",
+    researchInterests: "Object Oriented Systems, Web Design"
+  },
+  {
+    id: 16,
+    name: "Ms. A. Rachel Roselin, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "rachelroselin7158@saranathan.ac.in",
+    office: "CS Block - Room 230",
+    hours: "Tue, Thu 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rachelroselin7158.jpg",
+    researchInterests: "Computer Networks, Cyber Security"
+  },
+  {
+    id: 17,
+    name: "Ms. N. Ramya, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "ramya-cse@saranathan.ac.in",
+    office: "CS Block - Room 232",
+    hours: "Wed, Fri 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/ramya-cse.jpg",
+    researchInterests: "Compiler Design, Operating Systems"
+  },
+  {
+    id: 18,
+    name: "Mr. L. Parthipan, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "parthipan7129@saranathan.ac.in",
+    office: "CS Block - Room 234",
+    hours: "Mon, Thu 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/parthipan7129.jpg",
+    researchInterests: "Cloud Computing, Network Security"
+  },
+  {
+    id: 19,
+    name: "Ms. G. Sathya, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "sathya7144@saranathan.ac.in",
+    office: "CS Block - Room 236",
+    hours: "Tue, Fri 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sathya7144.jpg",
+    researchInterests: "Database Systems, Web Technologies"
+  },
+  {
+    id: 20,
+    name: "Ms. G. Roshini, M.Tech.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "roshini7146@saranathan.ac.in",
+    office: "CS Block - Room 238",
+    hours: "Wed, Thu 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/roshini7146.jpg",
+    researchInterests: "Data Science, Machine Learning"
+  },
 
   // --- ELECTRONICS & COMMUNICATION ENGINEERING (ECE) ---
   {
-    id: 10,
+    id: 21,
     name: "Dr. M. Santhi, M.E., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Electronics & Communication Engineering",
@@ -218,7 +339,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Signal Processing, Wireless Communications"
   },
   {
-    id: 11,
+    id: 22,
     name: "Dr. V. Mohan, M.E., Ph.D.",
     designation: "Professor",
     department: "Electronics & Communication Engineering",
@@ -229,7 +350,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "VLSI Design, Embedded Systems"
   },
   {
-    id: 12,
+    id: 23,
     name: "Dr. P. Shanmugapriya, M.Tech., Ph.D.",
     designation: "Professor",
     department: "Electronics & Communication Engineering",
@@ -240,7 +361,29 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Antenna Systems, RF Communication"
   },
   {
-    id: 13,
+    id: 24,
+    name: "Dr. M. Padmaa, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Electronics & Communication Engineering",
+    email: "padmaa-ece@saranathan.ac.in",
+    office: "ECE Block - Room 107",
+    hours: "Mon, Thu 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/padmaa-ece.jpg",
+    researchInterests: "Wireless Networks, Optical Communication"
+  },
+  {
+    id: 25,
+    name: "Dr. R. Mukesh, M.E., M.S., Ph.D.",
+    designation: "Professor",
+    department: "Electronics & Communication Engineering",
+    email: "mukesh7131@saranathan.ac.in",
+    office: "ECE Block - Room 109",
+    hours: "Tue, Fri 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mukesh7131.jpg",
+    researchInterests: "Embedded Controllers, Digital Signal Processing"
+  },
+  {
+    id: 26,
     name: "Dr. S.A. Arunmozhi, M.B.A, M.Tech., Ph.D.",
     designation: "Associate Professor",
     department: "Electronics & Communication Engineering",
@@ -251,7 +394,29 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Sensor Networks, IoT System Architecture"
   },
   {
-    id: 14,
+    id: 27,
+    name: "Dr. S. Rajeswari, M.Tech., Ph.D.",
+    designation: "Associate Professor",
+    department: "Electronics & Communication Engineering",
+    email: "rajeswaris-ece@saranathan.ac.in",
+    office: "ECE Block - Room 110",
+    hours: "Wed, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rajeswaris-ece.jpg",
+    researchInterests: "VLSI Design, Communication Networks"
+  },
+  {
+    id: 28,
+    name: "Dr. M. Baritha Begum, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Electronics & Communication Engineering",
+    email: "barithabegum-ece@saranathan.ac.in",
+    office: "ECE Block - Room 111",
+    hours: "Tue, Thu 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/barithabegum-ece.jpg",
+    researchInterests: "Digital Image Processing, Medical Electronics"
+  },
+  {
+    id: 29,
     name: "Dr. K. Malaisamy, M.E., Ph.D.",
     designation: "Assistant Professor",
     department: "Electronics & Communication Engineering",
@@ -261,10 +426,54 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/malaisamy-ece.jpg",
     researchInterests: "Microcontrollers, Image Processing"
   },
+  {
+    id: 30,
+    name: "Dr. G. Sivakannu, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electronics & Communication Engineering",
+    email: "sivakannu-ece@saranathan.ac.in",
+    office: "ECE Block - Room 114",
+    hours: "Mon, Wed 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sivakannu-ece.jpg",
+    researchInterests: "Wireless Communication, Antenna Design"
+  },
+  {
+    id: 31,
+    name: "Dr. S. Kiruthiga, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electronics & Communication Engineering",
+    email: "kiruthiga-ece@saranathan.ac.in",
+    office: "ECE Block - Room 115",
+    hours: "Thu, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/kiruthiga-ece.jpg",
+    researchInterests: "Embedded Systems, IoT Applications"
+  },
+  {
+    id: 32,
+    name: "Dr. N. Preethi Elizabeth, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electronics & Communication Engineering",
+    email: "preethielizabeth-ece@saranathan.ac.in",
+    office: "ECE Block - Room 116",
+    hours: "Mon, Fri 01:00 PM - 03:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/preethielizabeth-ece.jpg",
+    researchInterests: "Signal Processing, Neural Networks"
+  },
+  {
+    id: 33,
+    name: "Dr. B. Divya, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electronics & Communication Engineering",
+    email: "divyab-ece@saranathan.ac.in",
+    office: "ECE Block - Room 118",
+    hours: "Tue, Thu 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/divyab-ece.jpg",
+    researchInterests: "Communication Systems, VLSI Architecture"
+  },
 
   // --- ELECTRICAL & ELECTRONICS ENGINEERING (EEE) ---
   {
-    id: 15,
+    id: 34,
     name: "Dr. C. Krishnakumar, M.Tech., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Electrical & Electronics Engineering",
@@ -275,7 +484,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Power Systems, Smart Grid, High Voltage Engineering"
   },
   {
-    id: 16,
+    id: 35,
     name: "Dr. M.V. Suganyadevi, M.E., Ph.D.",
     designation: "Professor",
     department: "Electrical & Electronics Engineering",
@@ -286,7 +495,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Power Electronics, Renewable Energy Conversion"
   },
   {
-    id: 17,
+    id: 36,
     name: "Dr. D. Kalyana Kumar, M.Tech., Ph.D.",
     designation: "Professor",
     department: "Electrical & Electronics Engineering",
@@ -297,7 +506,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Electric Drives, Automation Controllers"
   },
   {
-    id: 18,
+    id: 37,
     name: "Dr. M. Marimuthu, M.E., Ph.D.",
     designation: "Associate Professor",
     department: "Electrical & Electronics Engineering",
@@ -307,10 +516,234 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/marimuthu-eee.jpg",
     researchInterests: "Control Systems, Circuit Theory"
   },
+  {
+    id: 38,
+    name: "Dr. S. Ram Prasath, M.Tech., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "ramprasath-eee@saranathan.ac.in",
+    office: "EEE Block - Room 112",
+    hours: "Mon, Wed 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/ramprasath-eee.jpg",
+    researchInterests: "Power Electronics, Smart Grids"
+  },
+  {
+    id: 39,
+    name: "Dr. P. Ram Prakash, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "ramprakash-eee@saranathan.ac.in",
+    office: "EEE Block - Room 114",
+    hours: "Tue, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/ramprakash-eee.jpg",
+    researchInterests: "High Voltage, Insulation Systems"
+  },
+  {
+    id: 40,
+    name: "Dr. R. Vijay, M.Tech., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "vijay-eee@saranathan.ac.in",
+    office: "EEE Block - Room 115",
+    hours: "Wed, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/vijay-eee.jpg",
+    researchInterests: "Renewable Energy Integration, Microgrids"
+  },
+  {
+    id: 41,
+    name: "Dr. N. Gayathri, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "gayathri-eee@saranathan.ac.in",
+    office: "EEE Block - Room 116",
+    hours: "Mon, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/gayathri-eee.jpg",
+    researchInterests: "Control Systems, Industrial Drives"
+  },
+  {
+    id: 42,
+    name: "Ms. C. Pearline Kamalini, M.E.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "pearline-eee@saranathan.ac.in",
+    office: "EEE Block - Room 118",
+    hours: "Tue, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/pearline-eee.jpg",
+    researchInterests: "Electric Machines, Power Circuits"
+  },
+  {
+    id: 43,
+    name: "Mr. B. Paranthagan, M.E.",
+    designation: "Assistant Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "paranthagan-eee@saranathan.ac.in",
+    office: "EEE Block - Room 120",
+    hours: "Wed, Thu 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/paranthagan-eee.jpg",
+    researchInterests: "Power Distribution, Smart Meters"
+  },
+
+  // --- INFORMATION TECHNOLOGY (IT) ---
+  {
+    id: 44,
+    name: "Dr. R. Thillaikarasi, M.Tech., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Information Technology",
+    email: "thillai-cse@saranathan.ac.in",
+    office: "IT Block - Room 301",
+    hours: "Mon, Wed 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/thillai-cse.jpg",
+    researchInterests: "Cloud Computing, Data Analytics, Software Engineering"
+  },
+  {
+    id: 45,
+    name: "Dr. J. Sangeethapriya, M.Tech., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "jspriya-it@saranathan.ac.in",
+    office: "IT Block - Room 304",
+    hours: "Tue, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/jspriya-it.jpg",
+    researchInterests: "Wireless Networks, Information Security"
+  },
+  {
+    id: 46,
+    name: "Dr. R. Rengaraj alias Muralidharan, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "rengaraj-it@saranathan.ac.in",
+    office: "IT Block - Room 306",
+    hours: "Wed, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rengaraj-it.jpg",
+    researchInterests: "Mobile Computing, Web Architecture"
+  },
+  {
+    id: 47,
+    name: "Mr. V. Senthil Balaji, M.E.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "senthilbalaji-it@saranathan.ac.in",
+    office: "IT Block - Room 308",
+    hours: "Mon, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/senthilbalaji-it.jpg",
+    researchInterests: "Data Mining, Cyber Forensics"
+  },
+  {
+    id: 48,
+    name: "Ms. A. Sheelavathi, M.E.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "sheelavathi-it@saranathan.ac.in",
+    office: "IT Block - Room 310",
+    hours: "Tue, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sheelavathi-it.jpg",
+    researchInterests: "Web Services, Distributed Systems"
+  },
+  {
+    id: 49,
+    name: "Mr. D. Raghu Raman, M.E.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "raghuraman7188@saranathan.ac.in",
+    office: "IT Block - Room 312",
+    hours: "Wed, Thu 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/raghuraman7188.jpg",
+    researchInterests: "Cloud Security, Big Data Analytics"
+  },
+  {
+    id: 50,
+    name: "Ms. K. Muthukarupaee, M.E.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "muthukarupaee-it@saranathan.ac.in",
+    office: "IT Block - Room 314",
+    hours: "Mon, Fri 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/muthukarupaee-it.jpg",
+    researchInterests: "Machine Learning, Python Programming"
+  },
+  {
+    id: 51,
+    name: "Ms. M. Jebarani, M.E.",
+    designation: "Assistant Professor",
+    department: "Information Technology",
+    email: "jebarani7104@saranathan.ac.in",
+    office: "IT Block - Room 316",
+    hours: "Tue, Thu 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/jebarani7104.jpg",
+    researchInterests: "Artificial Intelligence, Neural Networks"
+  },
+
+  // --- INSTRUMENTATION & CONTROL ENGINEERING (ICE) ---
+  {
+    id: 52,
+    name: "Dr. K. Gaayathry, M.E., Ph.D.",
+    designation: "Associate Professor & Head (HOD)",
+    department: "Instrumentation & Control Engineering",
+    email: "gaayathry-ice@saranathan.ac.in",
+    office: "ICE Block - Room 101",
+    hours: "Mon, Wed 10:30 AM - 12:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/gaayathry-ice.jpg",
+    researchInterests: "Process Control, Industrial Instrumentation, Sensors"
+  },
+  {
+    id: 53,
+    name: "Dr. M. Shanmugavalli, M.Tech., Ph.D.",
+    designation: "Professor",
+    department: "Instrumentation & Control Engineering",
+    email: "shanmugavalli-ice@saranathan.ac.in",
+    office: "ICE Block - Room 103",
+    hours: "Tue, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/shanmugavalli-ice.jpg",
+    researchInterests: "Process Automation, Robotics"
+  },
+  {
+    id: 54,
+    name: "Dr. A. Gopikrishnan, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Instrumentation & Control Engineering",
+    email: "gopi-ice@saranathan.ac.in",
+    office: "ICE Block - Room 105",
+    hours: "Wed, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/gopi-ice.jpg",
+    researchInterests: "Embedded Instrumentation, IoT Devices"
+  },
+  {
+    id: 55,
+    name: "Mr. R. Satheesh, M.E.",
+    designation: "Assistant Professor",
+    department: "Instrumentation & Control Engineering",
+    email: "satheesh-eee@saranathan.ac.in",
+    office: "ICE Block - Room 107",
+    hours: "Mon, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/satheesh-eee.jpg",
+    researchInterests: "Control Systems, Industrial Robotics"
+  },
+  {
+    id: 56,
+    name: "Mr. R. Seetharaman, M.Tech.",
+    designation: "Assistant Professor",
+    department: "Instrumentation & Control Engineering",
+    email: "seetharaman-ice@saranathan.ac.in",
+    office: "ICE Block - Room 108",
+    hours: "Tue, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/seetharaman-ice.jpg",
+    researchInterests: "PLC & SCADA Systems, Automation"
+  },
+  {
+    id: 57,
+    name: "Mr. S. Prassanna Perumal, M.E.",
+    designation: "Assistant Professor",
+    department: "Instrumentation & Control Engineering",
+    email: "prassanna-ice@saranathan.ac.in",
+    office: "ICE Block - Room 110",
+    hours: "Wed, Thu 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/prassanna-ice.jpg",
+    researchInterests: "Drone Robotics, Sensor Fusion"
+  },
 
   // --- ARTIFICIAL INTELLIGENCE & DATA SCIENCE (AI&DS) ---
   {
-    id: 19,
+    id: 58,
     name: "Dr. S. Ravimaran, M.E., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Artificial Intelligence & Data Science",
@@ -321,7 +754,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Artificial Intelligence, Deep Learning, Big Analytics"
   },
   {
-    id: 20,
+    id: 59,
     name: "Dr. P.D. Sheba Kezia Malarchelvi, M.E., Ph.D.",
     designation: "Professor",
     department: "Artificial Intelligence & Data Science",
@@ -332,7 +765,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Machine Learning, Natural Language Processing"
   },
   {
-    id: 21,
+    id: 60,
     name: "Dr. A. Kavitha, M.E., Ph.D.",
     designation: "Professor",
     department: "Artificial Intelligence & Data Science",
@@ -343,7 +776,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Data Analytics, Neural Networks"
   },
   {
-    id: 22,
+    id: 61,
     name: "Ms. A. Sridevi, M.E.",
     designation: "Assistant Professor",
     department: "Artificial Intelligence & Data Science",
@@ -353,10 +786,32 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/sridevi-aid.jpg",
     researchInterests: "Data Structures, Python for AI"
   },
+  {
+    id: 62,
+    name: "Mr. M. Arunprakash, M.Tech.",
+    designation: "Assistant Professor",
+    department: "Artificial Intelligence & Data Science",
+    email: "arunprakash7134@saranathan.ac.in",
+    office: "AI&DS Block - Room 312",
+    hours: "Tue, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/arunprakash7134.jpg",
+    researchInterests: "Big Data Systems, Computer Vision"
+  },
+  {
+    id: 63,
+    name: "Ms. T. Shanmuga Sundari, M.E.",
+    designation: "Assistant Professor",
+    department: "Artificial Intelligence & Data Science",
+    email: "shanmugasundari7159@saranathan.ac.in",
+    office: "AI&DS Block - Room 314",
+    hours: "Wed, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/shanmugasundari7159.jpg",
+    researchInterests: "AI Algorithms, Data Mining"
+  },
 
   // --- MECHANICAL ENGINEERING (MECH) ---
   {
-    id: 23,
+    id: 64,
     name: "Dr. R. Rekha, M.Tech., Ph.D.",
     designation: "Professor & Head i/c (HOD)",
     department: "Mechanical Engineering",
@@ -367,7 +822,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Additive Manufacturing, Finite Element Analysis"
   },
   {
-    id: 24,
+    id: 65,
     name: "Dr. N. Baskar, M.E., Ph.D.",
     designation: "Professor",
     department: "Mechanical Engineering",
@@ -378,7 +833,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "CAM, Computer Integrated Manufacturing"
   },
   {
-    id: 25,
+    id: 66,
     name: "Dr. M.R. Anantha Padmanaban, M.E., Ph.D.",
     designation: "Associate Professor",
     department: "Mechanical Engineering",
@@ -388,62 +843,54 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/mrpadmanaban-mech.jpg",
     researchInterests: "Heat Transfer, Thermodynamics"
   },
-
-  // --- CIVIL ENGINEERING (CE) ---
   {
-    id: 26,
-    name: "Dr. G.V. Soumya, M.E., Ph.D.",
-    designation: "Professor & Head (HOD)",
-    department: "Civil Engineering",
-    email: "hodcivil@saranathan.ac.in",
-    office: "Civil Block - Room 101",
-    hours: "Mon, Wed 10:00 AM - 12:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/soumya-civil.jpg",
-    researchInterests: "Structural Engineering, Concrete Technology"
+    id: 67,
+    name: "Dr. G. Mahesh, M.Tech., Ph.D.",
+    designation: "Associate Professor",
+    department: "Mechanical Engineering",
+    email: "mahesh-mech@saranathan.ac.in",
+    office: "Mechanical Block - Room 110",
+    hours: "Mon, Wed 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mahesh-mech.jpg",
+    researchInterests: "Machining Dynamics, Tool Wear Analysis"
   },
-
-  // --- COMPUTER SCIENCE & BUSINESS SYSTEM (CSBS) ---
   {
-    id: 27,
-    name: "Dr. P. Dinesh Kumar, M.E., Ph.D.",
-    designation: "Professor & Head (HOD)",
-    department: "Computer Science & Business System",
-    email: "hodcsbs@saranathan.ac.in",
-    office: "CSBS Block - Room 201",
+    id: 68,
+    name: "Dr. A. Mercy Vasan, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Mechanical Engineering",
+    email: "mercyvasan-mech@saranathan.ac.in",
+    office: "Mechanical Block - Room 112",
     hours: "Tue, Thu 02:00 PM - 04:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/dineshkumar-csbs.jpg",
-    researchInterests: "Enterprise Software, Business Analytics"
+    avatarUrl: "http://www.saranathan.ac.in/images/mercyvasan-mech.jpg",
+    researchInterests: "Materials Engineering, Nanocomposites"
   },
-
-  // --- INSTRUMENTATION & CONTROL ENGINEERING (ICE) ---
   {
-    id: 28,
-    name: "Dr. S. M. Girirajkumar, M.E., Ph.D.",
-    designation: "Professor & Head (HOD)",
-    department: "Instrumentation & Control Engineering",
-    email: "hodice@saranathan.ac.in",
-    office: "ICE Block - Room 104",
-    hours: "Mon, Wed 10:30 AM - 12:30 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/giriraj-ice.jpg",
-    researchInterests: "Process Control, E-Yantra Drone Robotics"
+    id: 69,
+    name: "Dr. M. Ganesan, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Mechanical Engineering",
+    email: "ganesan-mech@saranathan.ac.in",
+    office: "Mechanical Block - Room 114",
+    hours: "Wed, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/ganesan-mech.jpg",
+    researchInterests: "Fluid Dynamics, Solar Thermal Devices"
   },
-
-  // --- INFORMATION TECHNOLOGY (IT) ---
   {
-    id: 29,
-    name: "Dr. M. Shanmugavalli, M.E., Ph.D.",
-    designation: "Professor & Head (HOD)",
-    department: "Information Technology",
-    email: "hodit@saranathan.ac.in",
-    office: "IT Block - Room 301",
-    hours: "Tue, Fri 11:00 AM - 01:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/shanmugavalli-it.jpg",
-    researchInterests: "Cloud Infrastructure, Cyber Forensics"
+    id: 70,
+    name: "Dr. M. Varatharajulu, M.Tech., Ph.D.",
+    designation: "Associate Professor",
+    department: "Mechanical Engineering",
+    email: "varatharajulu7110@saranathan.ac.in",
+    office: "Mechanical Block - Room 115",
+    hours: "Thu, Fri 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/varatharajulu7110.jpg",
+    researchInterests: "CAD/CAM Automation, Kinematics"
   },
 
   // --- MANAGEMENT STUDIES (MBA) ---
   {
-    id: 30,
+    id: 71,
     name: "Dr. K. Rajkumar, Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Management Studies (MBA)",
@@ -456,7 +903,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
 
   // --- SCIENCE & HUMANITIES ---
   {
-    id: 31,
+    id: 72,
     name: "Dr. N. Bhuvaneswari, M.Sc., Ph.D.",
     designation: "Professor & Head (Mathematics)",
     department: "Science & Humanities",
@@ -467,7 +914,7 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     researchInterests: "Applied Mathematics, Numerical Methods"
   },
   {
-    id: 32,
+    id: 73,
     name: "Dr. L. Vinoth, M.Sc., Ph.D.",
     designation: "Professor & Head (Physics)",
     department: "Science & Humanities",
