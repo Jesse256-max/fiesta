@@ -49,18 +49,19 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onStatusChange }) =
   ));
 
   const handleRegister = async () => {
-    if (!token) {
-      alert("Please sign in with Google first to register for campus events!");
+    if (!token && !localUser) {
+      alert("Please sign in first to register for campus events!");
       loginWithGoogle();
       return;
     }
 
     setLoading(true);
     try {
+      const authToken = token || (localUser ? `local_${localUser.email}` : "");
       const response = await fetch(`/api/events/${event.id}/register`, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${authToken}`,
         },
       });
 
@@ -80,10 +81,11 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onStatusChange }) =
   const handleCancel = async () => {
     setLoading(true);
     try {
+      const authToken = token || (localUser ? `local_${localUser.email}` : "");
       const response = await fetch(`/api/events/${event.id}/cancel`, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${authToken}`,
         },
       });
 

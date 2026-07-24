@@ -1,0 +1,5 @@
+[tool.pyright]
+extraPaths = ["backend"]
+
+[tool.mypy]
+mypy_path = "backend"

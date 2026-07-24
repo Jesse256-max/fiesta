@@ -3,7 +3,9 @@ import hmac
 import os
 import re
 
-def hash_password(password: str, salt: str = None) -> str:
+from typing import Optional
+
+def hash_password(password: str, salt: Optional[str] = None) -> str:
     """Hashes a password using scrypt with a 16-byte random hex salt."""
     if not salt:
         salt_bytes = os.urandom(16)

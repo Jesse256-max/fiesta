@@ -1,6 +1,10 @@
 from sqlalchemy import String, Integer, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
-from app.database.base import Base
+
+try:
+    from app.database.base import Base
+except ImportError:
+    from ..database.base import Base
 
 class TimetableCourse(Base):
     __tablename__ = "timetable_courses"

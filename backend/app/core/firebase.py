@@ -1,7 +1,11 @@
 import logging
 import firebase_admin
 from firebase_admin import credentials, auth
-from app.core.config import settings
+
+try:
+    from app.core.config import settings
+except ImportError:
+    from .config import settings
 
 logger = logging.getLogger(__name__)
 

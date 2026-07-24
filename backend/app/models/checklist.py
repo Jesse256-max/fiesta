@@ -1,6 +1,10 @@
 from sqlalchemy import String, Integer, Boolean, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
-from app.database.base import Base
+
+try:
+    from app.database.base import Base
+except ImportError:
+    from ..database.base import Base
 
 class ChecklistProgress(Base):
     __tablename__ = "checklist_progress"

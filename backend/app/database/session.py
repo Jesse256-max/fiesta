@@ -1,5 +1,9 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from app.core.config import settings
+
+try:
+    from app.core.config import settings
+except ImportError:
+    from ..core.config import settings
 
 database_url = settings.DATABASE_URL
 if database_url.startswith("sqlite:///"):
@@ -32,5 +36,3 @@ async def get_db():
         except Exception:
             await session.rollback()
             raise
-        finally:
-            await session.close()

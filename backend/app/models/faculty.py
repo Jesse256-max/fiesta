@@ -1,6 +1,11 @@
+from typing import Optional
 from sqlalchemy import String, Integer, Text
 from sqlalchemy.orm import Mapped, mapped_column
-from app.database.base import Base
+
+try:
+    from app.database.base import Base
+except ImportError:
+    from ..database.base import Base
 
 class Faculty(Base):
     __tablename__ = "faculty"
@@ -13,5 +18,5 @@ class Faculty(Base):
     office: Mapped[str] = mapped_column(String(255), nullable=False)
     office_hours: Mapped[str] = mapped_column(String(255), nullable=False)
     courses_taught: Mapped[str] = mapped_column(Text, nullable=False)
-    avatar_url: Mapped[str] = mapped_column(String(500), nullable=True)
-    research_interests: Mapped[str] = mapped_column(Text, nullable=True)
+    avatar_url: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
+    research_interests: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
