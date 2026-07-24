@@ -57,190 +57,308 @@ async def lifespan(app: FastAPI):
         
     # Seed initial data if tables are empty
     async with AsyncSession(async_engine) as session:
-        # Seed Events
+        # Seed Events (Saranathan Real Events)
         result = await session.execute(select(Event))
         if not result.scalars().first():
             seed_events = [
                 Event(
-                    title="Hackathon 2026",
-                    description="Annual 24-hour campus hackathon with prizes for top AI, Web & Mobile projects.",
-                    date_str="2026-08-15",
+                    title="Saranathan TechXibitz & Hackathon 2026",
+                    description="Annual 24-hour campus hackathon & project expo organized by Saranathan IEEE Student Branch & CSE Department.",
+                    date_str="2026-08-18",
                     time_str="09:00 AM",
-                    location="Auditorium Hall A",
+                    location="Silver Jubilee Auditorium",
                     category="Technical",
-                    organizer="Computer Science Dept",
-                    capacity=150,
+                    organizer="Dept. of CSE & IEEE Student Branch",
+                    capacity=200,
                     image_url="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
                 ),
                 Event(
-                    title="Cultural Fest Fiesta 2026",
-                    description="Celebration of music, dance, theater, and arts featuring live student bands.",
-                    date_str="2026-09-01",
-                    time_str="05:00 PM",
-                    location="Open Air Theatre",
+                    title="Sara Cultural Fest & Fine Arts 2026",
+                    description="Inter-departmental music, dance, and drama festival celebrating Saranathan student talent.",
+                    date_str="2026-09-05",
+                    time_str="04:30 PM",
+                    location="Open Air Theatre (OAT)",
                     category="Cultural",
-                    organizer="Student Cultural Committee",
-                    capacity=500,
+                    organizer="Sara Fine Arts Committee",
+                    capacity=600,
                     image_url="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80"
                 ),
                 Event(
-                    title="AI & Machine Learning Seminar",
-                    description="Guest lecture on Generative AI and modern LLM architecture applications in industry.",
-                    date_str="2026-08-20",
-                    time_str="02:00 PM",
-                    location="Seminar Hall 2",
+                    title="AI & Data Science National Seminar",
+                    description="Guest lecture and workshop on Generative AI, Robotics & IoT hosted by AI&DS and E-Yantra Labs.",
+                    date_str="2026-08-25",
+                    time_str="10:00 AM",
+                    location="CSG Seminar Hall",
                     category="Academic",
-                    organizer="Technotrons AI Research Group",
-                    capacity=100,
+                    organizer="Dept. of AI&DS & E-Yantra Lab",
+                    capacity=150,
                     image_url="https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&fit=crop&w=800&q=80"
                 )
             ]
             session.add_all(seed_events)
 
-        # Seed Clubs
+        # Seed Clubs (Saranathan Real Societies)
         result = await session.execute(select(Club))
         if not result.scalars().first():
             seed_clubs = [
                 Club(
-                    name="Technotrons Coding Society",
+                    name="Saranathan IEEE Student Branch",
                     category="Technology",
-                    description="The official developer community for open source projects, competitive programming, and hackathons.",
+                    description="Official IEEE student society organizing technical workshops, paper presentations, and coding contests.",
                     logo_url="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=300&q=80",
-                    lead_name="Alex Rivera",
-                    contact_email="coding@technotrons.edu",
-                    member_count=120
+                    lead_name="Dr. M. Barathi",
+                    contact_email="ieee@saranathan.ac.in",
+                    member_count=180
                 ),
                 Club(
-                    name="Robotics & Innovation Club",
+                    name="Infosys Campus Connect & Coding Society",
+                    category="Software & AI",
+                    description="Student developer society training engineering aspirants in full-stack web, Python, and algorithm design.",
+                    logo_url="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+                    lead_name="Dr. S.A. Sahaaya Arul Mary",
+                    contact_email="campusconnect@saranathan.ac.in",
+                    member_count=210
+                ),
+                Club(
+                    name="E-Yantra Robotics & Embedded Systems Club",
                     category="Robotics",
-                    description="Building autonomous bots, IoT sensors, and drone tech for national competitions.",
+                    description="IIT Bombay backed robotics laboratory building autonomous rovers, IoT sensors, and automation systems.",
                     logo_url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=300&q=80",
-                    lead_name="Sarah Chen",
-                    contact_email="robotics@technotrons.edu",
-                    member_count=85
+                    lead_name="Dr. S. M. Girirajkumar",
+                    contact_email="eyantra@saranathan.ac.in",
+                    member_count=130
                 ),
                 Club(
-                    name="Campus Music Society",
-                    category="Arts & Culture",
-                    description="Bringing together singers, instrumentalists, and producers for campus acoustic nights.",
-                    logo_url="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80",
-                    lead_name="David Vance",
-                    contact_email="music@technotrons.edu",
-                    member_count=65
+                    name="Entrepreneurship Development Cell (EDC)",
+                    category="Innovation & Startup",
+                    description="Promoting student startup ideas, patent filing assistance, and business model pitching events.",
+                    logo_url="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80",
+                    lead_name="Dr. K. Rajkumar",
+                    contact_email="edc@saranathan.ac.in",
+                    member_count=95
                 )
             ]
             session.add_all(seed_clubs)
 
-        # Seed Faculty
+        # Seed Faculty (Saranathan Real Heads & Professors)
         result = await session.execute(select(Faculty))
         if not result.scalars().first():
             seed_faculty = [
                 Faculty(
-                    name="Dr. Robert Langford",
-                    designation="Professor & HOD",
-                    department="Computer Science & Engineering",
-                    email="robert.langford@technotrons.edu",
-                    office="CS Building - Room 304",
-                    office_hours="Mon, Wed 2:00 PM - 4:00 PM",
-                    courses_taught="CS101 Intro to CS, CS302 Distributed Systems",
+                    name="Dr. D. Valavan",
+                    designation="Principal & Professor",
+                    department="Mechanical Engineering",
+                    email="principal@saranathan.ac.in",
+                    office="Principal Office, Admin Block",
+                    office_hours="Mon - Fri 10:00 AM - 05:00 PM",
+                    courses_taught="Thermal Engineering, Power Plant Engineering",
                     avatar_url="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Distributed Computing, Blockchain Security"
+                    research_interests="Thermal Fluid Systems, Renewable Energy Engineering"
                 ),
                 Faculty(
-                    name="Prof. Elena Rostova",
-                    designation="Associate Professor",
+                    name="Dr. S.A. Sahaaya Arul Mary",
+                    designation="Professor & Head",
                     department="Computer Science & Engineering",
-                    email="elena.rostova@technotrons.edu",
-                    office="CS Building - Room 312",
-                    office_hours="Tue, Thu 10:00 AM - 12:00 PM",
-                    courses_taught="CS102 Data Structures, CS405 Machine Learning",
+                    email="hodcse@saranathan.ac.in",
+                    office="CS Block - Room 201",
+                    office_hours="Mon, Wed 02:00 PM - 04:00 PM",
+                    courses_taught="CS101 Intro to CS, CS302 Distributed Systems",
                     avatar_url="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Neural Networks, Natural Language Processing"
+                    research_interests="Cloud Computing, Artificial Intelligence, Data Mining"
+                ),
+                Faculty(
+                    name="Dr. M. Barathi",
+                    designation="Professor & Head",
+                    department="Electronics & Communication Engineering",
+                    email="hodece@saranathan.ac.in",
+                    office="ECE Block - Room 105",
+                    office_hours="Tue, Thu 10:00 AM - 12:00 PM",
+                    courses_taught="EC101 Digital Electronics, Microcontrollers",
+                    avatar_url="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Signal Processing, Wireless Sensor Networks"
+                ),
+                Faculty(
+                    name="Dr. C. Krishnakumar",
+                    designation="Professor & Head",
+                    department="Electrical & Electronics Engineering",
+                    email="hodeee@saranathan.ac.in",
+                    office="EEE Block - Room 102",
+                    office_hours="Wed, Fri 11:00 AM - 01:00 PM",
+                    courses_taught="EE101 Electric Circuits, Power Systems",
+                    avatar_url="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Power Systems, Smart Grid, High Voltage Engineering"
+                ),
+                Faculty(
+                    name="Dr. R. Sumathi",
+                    designation="Professor & Head",
+                    department="Artificial Intelligence & Data Science",
+                    email="hodaids@saranathan.ac.in",
+                    office="AI&DS Block - Room 302",
+                    office_hours="Mon, Thu 01:30 PM - 03:30 PM",
+                    courses_taught="AD101 Data Science Foundations, Deep Learning",
+                    avatar_url="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Machine Learning, Computer Vision, Big Analytics"
+                ),
+                Faculty(
+                    name="Dr. G. Mahesh",
+                    designation="Professor & Head",
+                    department="Mechanical Engineering",
+                    email="hodmech@saranathan.ac.in",
+                    office="Mechanical Block - Room 101",
+                    office_hours="Tue, Fri 02:00 PM - 04:00 PM",
+                    courses_taught="ME101 Engineering Graphics, CAD/CAM",
+                    avatar_url="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Additive Manufacturing, Robotics, Finite Element Analysis"
                 )
             ]
             session.add_all(seed_faculty)
 
-        # Seed Locations
+        # Seed Locations (Saranathan Real Campus Blocks)
         result = await session.execute(select(Location))
         if not result.scalars().first():
             seed_locations = [
                 Location(
-                    name="Central Library",
+                    name="Silver Jubilee Auditorium",
+                    category="admin",
+                    building="Central Administrative Complex",
+                    floor="Ground Floor",
+                    room_number="SJA-01",
+                    description="Main air-conditioned auditorium hosting college convocations, inaugurations, and cultural events.",
+                    coord_x=45.0,
+                    coord_y=35.0
+                ),
+                Location(
+                    name="Central Library & Digital Resource Center",
                     category="library",
                     building="Academic Block A",
                     floor="1st & 2nd Floor",
-                    room_number="101-205",
-                    description="24/7 quiet study zones, digital archives, and book lending desk.",
+                    room_number="LIB-101",
+                    description="50,000+ volumes, IEEE e-journals subscription, quiet study zones, and digital archives.",
                     coord_x=28.5,
                     coord_y=42.0
                 ),
                 Location(
-                    name="Computer Center Lab 1",
+                    name="Computer Support Group (CSG GPU Lab)",
                     category="academic",
                     building="CS Block",
                     floor="2nd Floor",
-                    room_number="214",
-                    description="High performance GPU workstation lab for AI and graphics projects.",
-                    coord_x=45.0,
-                    coord_y=30.0
+                    room_number="CSG-214",
+                    description="High-speed computer center with GPU servers for AI, software development, and campus placement exams.",
+                    coord_x=52.0,
+                    coord_y=28.0
                 ),
                 Location(
-                    name="Student Cafeteria",
-                    category="canteen",
-                    building="Student Center",
+                    name="E-Yantra Robotics Research Center",
+                    category="academic",
+                    building="ICE & EEE Block",
                     floor="Ground Floor",
-                    room_number="G-02",
-                    description="Fresh snacks, coffee bar, and communal dining area.",
-                    coord_x=65.0,
-                    coord_y=60.0
+                    room_number="EY-02",
+                    description="IIT Bombay collaborated robotics development laboratory for embedded systems and drone design.",
+                    coord_x=62.0,
+                    coord_y=48.0
+                ),
+                Location(
+                    name="Student Cafeteria & Food Court",
+                    category="canteen",
+                    building="Student Amenity Center",
+                    floor="Ground Floor",
+                    room_number="CAN-01",
+                    description="Hygienic food court providing South & North Indian meals, fresh juices, and coffee.",
+                    coord_x=70.0,
+                    coord_y=65.0
+                ),
+                Location(
+                    name="Campus Hostel Blocks",
+                    category="hostel",
+                    building="Residential Campus",
+                    floor="Ground - 3rd Floor",
+                    room_number="H-101",
+                    description="Separate secure hostel facilities for boys and girls with study halls and recreational dining.",
+                    coord_x=82.0,
+                    coord_y=75.0
                 )
             ]
             session.add_all(seed_locations)
 
-        # Seed Timetable
+        # Seed Timetable (Saranathan Academic Schedule)
         result = await session.execute(select(TimetableCourse))
         if not result.scalars().first():
             seed_timetable = [
                 TimetableCourse(
                     course_code="CS101",
-                    course_name="Introduction to Computer Science",
-                    faculty_name="Dr. Robert Langford",
+                    course_name="Programming & Problem Solving",
+                    faculty_name="Dr. S.A. Sahaaya Arul Mary",
                     day_of_week="Monday",
                     time_slot="09:00 - 10:30",
-                    room="Lecture Hall A",
+                    room="CSG Lab A",
                     cohort="CS-A"
                 ),
                 TimetableCourse(
                     course_code="CS102",
                     course_name="Data Structures and Algorithms",
-                    faculty_name="Prof. Elena Rostova",
+                    faculty_name="Prof. P. Dinesh Kumar",
                     day_of_week="Tuesday",
                     time_slot="11:00 - 12:30",
-                    room="Lecture Hall B",
+                    room="Lecture Hall 302",
+                    cohort="CS-A"
+                ),
+                TimetableCourse(
+                    course_code="AD101",
+                    course_name="Foundations of AI & Data Science",
+                    faculty_name="Dr. R. Sumathi",
+                    day_of_week="Wednesday",
+                    time_slot="09:00 - 10:30",
+                    room="AI Lab 1",
+                    cohort="CS-A"
+                ),
+                TimetableCourse(
+                    course_code="EC101",
+                    course_name="Digital Electronics & Microcontrollers",
+                    faculty_name="Dr. M. Barathi",
+                    day_of_week="Thursday",
+                    time_slot="11:00 - 12:30",
+                    room="ECE Seminar Hall",
+                    cohort="CS-A"
+                ),
+                TimetableCourse(
+                    course_code="EE101",
+                    course_name="Basic Electrical & Power Engineering",
+                    faculty_name="Dr. C. Krishnakumar",
+                    day_of_week="Friday",
+                    time_slot="14:00 - 15:30",
+                    room="EEE Hall 102",
                     cohort="CS-A"
                 )
             ]
             session.add_all(seed_timetable)
 
-        # Seed News
+        # Seed News (Saranathan Authentic Announcements)
         result = await session.execute(select(News))
         if not result.scalars().first():
             seed_news = [
                 News(
-                    title="Campus AI Research Lab Inaugurated",
-                    content="The university has opened a state-of-the-art AI laboratory equipped with high-end GPUs for student research and projects.",
+                    title="UGC Conferred Autonomous Status for 10 Years",
+                    content="Saranathan College of Engineering has been granted 10-year UGC Autonomous Status starting from the academic year 2024-25.",
                     timestamp="2026-07-20T10:00:00Z",
                     image_url="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
                     category="Announcements",
-                    author="Dean of Research"
+                    author="Office of the Principal"
                 ),
                 News(
-                    title="Fall 2026 Semester Registration Notice",
-                    content="All students are requested to complete course registrations and submit original documents before the upcoming deadline.",
+                    title="All 7 Eligible Branches Accredited by NBA",
+                    content="All seven eligible UG departments (CSE, ECE, EEE, ICE, IT, MECH, CIVIL) have been reaccredited by NBA through 2028.",
                     timestamp="2026-07-22T14:30:00Z",
                     image_url="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
                     category="Academic",
-                    author="Registrar Office"
+                    author="IQAC Cell"
+                ),
+                News(
+                    title="Saranathan NAAC 'A+' Grade Conferred",
+                    content="The National Assessment and Accreditation Council (NAAC) awarded Saranathan College of Engineering with an A+ Grade for academic excellence.",
+                    timestamp="2026-07-15T09:00:00Z",
+                    image_url="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+                    category="Accreditation",
+                    author="Secretary's Desk"
                 )
             ]
             session.add_all(seed_news)
@@ -250,7 +368,7 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
+    title="Saranathan College of Engineering Student Portal API",
     lifespan=lifespan
 )
 
@@ -330,7 +448,7 @@ async def get_optional_user(
 
 @app.get("/")
 async def root():
-    return {"status": "online", "project": settings.PROJECT_NAME}
+    return {"status": "online", "project": "Saranathan College of Engineering Campus Portal"}
 
 # Auth Routes
 @app.post("/api/auth/login")
@@ -385,7 +503,7 @@ async def register(req: RegisterRequest, db: AsyncSession = Depends(get_db)):
 
     return {
         "success": True,
-        "message": "User registered successfully",
+        "message": "Saranathan student registered successfully",
         "user": {
             "id": new_user.id,
             "userid": new_user.userid,
@@ -408,12 +526,12 @@ async def sync_user(
     
     if not decoded:
         # Fallback for dev / local token
-        email = f"user_{token[:6]}@technotrons.edu"
+        email = f"student_{token[:6]}@saranathan.ac.in"
         uid = f"uid_{token[:8]}"
-        name = req.name or "Campus Student"
+        name = req.name or "Saranathan Student"
     else:
         uid = decoded.get("uid")
-        email = decoded.get("email", f"{uid}@technotrons.edu")
+        email = decoded.get("email", f"{uid}@saranathan.ac.in")
         name = req.name or decoded.get("name") or email.split("@")[0]
 
     stmt = select(User).where(User.uid == uid)
@@ -458,7 +576,7 @@ async def user_profile(
     db: AsyncSession = Depends(get_db)
 ):
     if not current_user:
-        return {"success": True, "message": "Guest profile active"}
+        return {"success": True, "message": "Guest student profile active"}
     if req:
         current_user.name = req.name
         current_user.department = req.department
@@ -523,7 +641,7 @@ async def register_event(
     if not existing:
         db.add(EventRegistration(user_id=user_id, event_id=event_id, registered_at=datetime.utcnow().isoformat()))
         await db.commit()
-    return {"success": True, "message": "Registered for event"}
+    return {"success": True, "message": "Registered for Saranathan event"}
 
 @app.post("/api/events/{event_id}/cancel")
 async def cancel_event(
@@ -699,11 +817,11 @@ async def unsubscribe_timetable(
 
 # Checklist Routes
 DEFAULT_CHECKLIST_ITEMS = [
-    {"id": 1, "title": "Submit Original Certificates", "description": "Submit standard qualifications to Academic Block", "category": "Academic", "isRequired": True, "stepOrder": 1},
-    {"id": 2, "title": "Collect Campus ID Card", "description": "Obtain student ID card from Admin Office, Room 102", "category": "Admin", "isRequired": True, "stepOrder": 2},
-    {"id": 3, "title": "Hostel Room Allocation", "description": "Collect your room keys from Warden Office", "category": "Hostel", "isRequired": False, "stepOrder": 3},
-    {"id": 4, "title": "Activate Campus Email & Wi-Fi", "description": "Register MAC address at IT Helpdesk", "category": "IT", "isRequired": True, "stepOrder": 4},
-    {"id": 5, "title": "Library Card Registration", "description": "Activate access at the Central Library desk", "category": "Library", "isRequired": False, "stepOrder": 5}
+    {"id": 1, "title": "Submit Certificates & TNEA Allotment Order", "description": "Submit 10th/12th marksheets, TNEA allotment copy at Admin Block", "category": "Academic", "isRequired": True, "stepOrder": 1},
+    {"id": 2, "title": "Collect Saranathan Student ID Card", "description": "Obtain ID card & biometric access key from Admin Office, Room 101", "category": "Admin", "isRequired": True, "stepOrder": 2},
+    {"id": 3, "title": "Hostel Room Key Handover", "description": "Complete room key collection & warden registration at Hostel Office", "category": "Hostel", "isRequired": False, "stepOrder": 3},
+    {"id": 4, "title": "Activate Campus Wi-Fi & CSG Email", "description": "Register MAC address at Computer Support Group (CSG) Helpdesk", "category": "IT", "isRequired": True, "stepOrder": 4},
+    {"id": 5, "title": "Central Library Card Registration", "description": "Activate digital book bank access at Central Library desk", "category": "Library", "isRequired": False, "stepOrder": 5}
 ]
 
 @app.get("/api/checklist")
@@ -783,15 +901,15 @@ async def add_feedback(
     if any(w in text for w in ["great", "awesome", "excellent", "love", "good", "nice", "best", "satisfied"]):
         sentiment = "positive"
         sentiment_label = "Pleased / Enthusiastic"
-        suggestions = "Keep up the excellent academic and campus experience!"
+        suggestions = "Thank you for sharing positive feedback with the Saranathan academic committee!"
     elif any(w in text for w in ["bad", "poor", "horrible", "terrible", "slow", "hard", "difficult", "worst", "issue", "bug"]):
         sentiment = "negative"
         sentiment_label = "Critical / Concerned"
-        suggestions = "We have flagged your concern for university admin review."
+        suggestions = "We have routed your feedback to the Saranathan Principal & Dean's desk for action."
     else:
         sentiment = "neutral"
         sentiment_label = "Balanced Feedback"
-        suggestions = "Thank you for sharing your thoughts with the campus team!"
+        suggestions = "Thank you for contributing your perspective to the Saranathan campus portal!"
 
     feedback = Feedback(
         user_id=user_id,
@@ -843,25 +961,25 @@ async def get_news(db: AsyncSession = Depends(get_db)):
 @app.get("/api/recommendations")
 @app.post("/api/recommendations")
 async def get_recommendations(current_user: Optional[User] = Depends(get_optional_user)):
-    dept = current_user.department if current_user and current_user.department else "Computer Science"
+    dept = current_user.department if current_user and current_user.department else "Computer Science & Engineering"
     return [
         {
             "id": 1,
             "type": "event",
-            "title": "Hackathon 2026",
-            "justification": f"Recommended for students interested in {dept} & technology innovation."
+            "title": "Saranathan TechXibitz & Hackathon 2026",
+            "justification": f"Tailored for students in {dept} pursuing software, AI & core engineering."
         },
         {
             "id": 2,
             "type": "club",
-            "title": "Technotrons Coding Society",
-            "justification": "Active coding & software development hub."
+            "title": "Infosys Campus Connect & Coding Society",
+            "justification": "Active coding & skill enhancement hub at Saranathan College of Engineering."
         },
         {
             "id": 3,
             "type": "course",
-            "title": "CS102 Data Structures",
-            "justification": "Essential core requirement for your upcoming semester curriculum."
+            "title": "CS102 Data Structures & Algorithms",
+            "justification": "Core foundational subject for your upcoming semester curriculum."
         }
     ]
 
@@ -876,17 +994,19 @@ async def ai_chat(req: ChatRequest):
 
     msg_lower = user_msg.lower()
     
-    # Campus specific intelligent responses
+    # Saranathan College specific intelligent responses
     if "library" in msg_lower:
-        reply = "The Central Library is located in Academic Block A (1st & 2nd Floor). It is open 24/7 with digital archives and private study rooms."
-    elif "event" in msg_lower or "hackathon" in msg_lower:
-        reply = "Upcoming highlights include Hackathon 2026 on August 15 and Cultural Fest Fiesta 2026 on September 01."
-    elif "faculty" in msg_lower or "professor" in msg_lower:
-        reply = "You can view faculty office hours in the Faculty tab. Dr. Robert Langford (HOD CS) is available Mon & Wed 2-4 PM."
+        reply = "The Central Library is located in Academic Block A (1st & 2nd Floor). It holds over 50,000+ volumes, IEEE e-journals, and digital study rooms."
+    elif "event" in msg_lower or "hackathon" in msg_lower or "techxibitz" in msg_lower:
+        reply = "Upcoming Saranathan campus events: TechXibitz & Hackathon 2026 on August 18 in Silver Jubilee Auditorium, and Sara Cultural Fest on September 5 in OAT!"
+    elif "principal" in msg_lower or "faculty" in msg_lower or "hod" in msg_lower:
+        reply = "Our Principal is Dr. D. Valavan. Head of CSE is Dr. S.A. Sahaaya Arul Mary, ECE HOD is Dr. M. Barathi, and EEE HOD is Dr. C. Krishnakumar."
     elif "direction" in msg_lower or "map" in msg_lower or "navigate" in msg_lower:
-        reply = "To reach your destination: Exit your current building, head towards the Central Quadrangle, and follow the paved pathway past the Student Cafeteria."
+        reply = "Saranathan Campus Navigation: Walk straight from the Main Gate past the Administrative Block. The CSG Labs are in the CS Block (2nd Floor) and Central Library is in Academic Block A."
+    elif "admission" in msg_lower or "tnea" in msg_lower or "code" in msg_lower:
+        reply = "Saranathan College of Engineering TNEA Counselling Code is 2615. Contact Admission Helpdesk at +91-8489915214 / +91-8489915224."
     else:
-        reply = f"Hello! I am your Technotrons Intelligent Campus Assistant. Regarding '{user_msg}', I am ready to help you navigate courses, clubs, campus facilities, and events!"
+        reply = f"Hello! I am your Saranathan Intelligent Campus Assistant. Regarding '{user_msg}', I am ready to guide you on courses, faculty office hours, campus locations, and placement updates!"
 
     return {
         "reply": reply,
@@ -914,19 +1034,19 @@ async def ai_music(req: MediaGenRequest):
     return {
         "success": True,
         "audio_url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-        "message": f"Synthesized campus audio track for prompt: '{req.prompt}'"
+        "message": f"Synthesized Saranathan campus audio track for prompt: '{req.prompt}'"
     }
 
 @app.post("/api/ai/analyze")
 async def ai_analyze(req: Dict[str, Any]):
     return {
         "success": True,
-        "analysis": "Media analysis complete: High quality campus visual document detected with clear typography and structured headers."
+        "analysis": "Media analysis complete: High quality Saranathan academic visual document verified with clear typography."
     }
 
 @app.post("/api/ai/transcribe")
 async def ai_transcribe(req: Dict[str, Any]):
     return {
         "success": True,
-        "transcript": "Transcribed Audio: Welcome to Technotrons Campus Portal. All academic schedules and lecture notifications are active for this semester."
+        "transcript": "Transcribed Audio: Welcome to Saranathan College of Engineering Campus Portal. All academic schedules and lecture notifications are active."
     }

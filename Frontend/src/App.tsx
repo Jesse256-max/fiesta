@@ -71,35 +71,34 @@ const pageVariants = {
 };
 
 const DEFAULT_CHECKLIST: ChecklistItem[] = [
-  { id: 1, title: "Submit Original Certificates", description: "Submit standard qualifications to Academic Block", category: "Academic", isRequired: true, stepOrder: 1, completed: false },
-  { id: 2, title: "Collect Campus ID Card", description: "Obtain student ID card from Admin Office, Room 102", category: "Admin", isRequired: true, stepOrder: 2, completed: false },
-  { id: 3, title: "Hostel Room Allocation", description: "Collect your room keys from Warden Office", category: "Hostel", isRequired: false, stepOrder: 3, completed: false },
-  { id: 4, title: "Activate Campus Email & Wi-Fi", description: "Register MAC address at IT Helpdesk", category: "IT", isRequired: true, stepOrder: 4, completed: false },
-  { id: 5, title: "Library Card Registration", description: "Activate access at the Central Library desk", category: "Library", isRequired: false, stepOrder: 5, completed: false }
+  { id: 1, title: "Submit Certificates & TNEA Allotment Order", description: "Submit 10th/12th marksheets & TNEA allotment copy at Admin Block", category: "Academic", isRequired: true, stepOrder: 1, completed: false },
+  { id: 2, title: "Collect Saranathan Student ID Card", description: "Obtain ID card & biometric access key from Admin Office, Room 101", category: "Admin", isRequired: true, stepOrder: 2, completed: false },
+  { id: 3, title: "Hostel Room Key Handover", description: "Complete room key collection & warden registration at Hostel Office", category: "Hostel", isRequired: false, stepOrder: 3, completed: false },
+  { id: 4, title: "Activate Campus Wi-Fi & CSG Email", description: "Register MAC address at Computer Support Group (CSG) Helpdesk", category: "IT", isRequired: true, stepOrder: 4, completed: false },
+  { id: 5, title: "Central Library Card Registration", description: "Activate digital book bank access at Central Library desk", category: "Library", isRequired: false, stepOrder: 5, completed: false }
 ];
 
 const DEFAULT_TIMETABLE: TimetableCourse[] = [
-  { id: 1, courseCode: "CS101", courseName: "Introduction to Computer Science", facultyId: 1, dayOfWeek: "Monday", startTime: "09:00", endTime: "10:30", location: "Lecture Hall A", cohort: "CS-A", isSubscribed: true },
-  { id: 2, courseCode: "CS101", courseName: "Introduction to Computer Science", facultyId: 1, dayOfWeek: "Wednesday", startTime: "09:00", endTime: "10:30", location: "Lecture Hall A", cohort: "CS-A", isSubscribed: true },
-  { id: 3, courseCode: "CS102", courseName: "Data Structures and Algorithms", facultyId: 2, dayOfWeek: "Tuesday", startTime: "11:00", endTime: "12:30", location: "Lecture Hall B", cohort: "CS-A", isSubscribed: true },
-  { id: 4, courseCode: "CS102", courseName: "Data Structures and Algorithms", facultyId: 2, dayOfWeek: "Thursday", startTime: "11:00", endTime: "12:30", location: "Lecture Hall B", cohort: "CS-A", isSubscribed: true },
-  { id: 5, courseCode: "EE101", courseName: "Basic Electrical Engineering", facultyId: 3, dayOfWeek: "Monday", startTime: "14:00", endTime: "15:30", location: "Seminar Room 1", cohort: "CS-A", isSubscribed: false },
-  { id: 6, courseCode: "EE101", courseName: "Basic Electrical Engineering", facultyId: 3, dayOfWeek: "Wednesday", startTime: "14:00", endTime: "15:30", location: "Seminar Room 1", cohort: "CS-A", isSubscribed: false },
-  { id: 7, courseCode: "PH101", courseName: "Engineering Physics", facultyId: 4, dayOfWeek: "Tuesday", startTime: "09:00", endTime: "10:30", location: "Physics Lab", cohort: "CS-A", isSubscribed: false },
-  { id: 8, courseCode: "PH101", courseName: "Engineering Physics", facultyId: 4, dayOfWeek: "Friday", startTime: "09:00", endTime: "10:30", location: "Physics Lab", cohort: "CS-A", isSubscribed: false }
+  { id: 1, courseCode: "CS101", courseName: "Programming & Problem Solving", facultyId: 1, dayOfWeek: "Monday", startTime: "09:00", endTime: "10:30", location: "CSG Lab A", cohort: "CS-A", isSubscribed: true },
+  { id: 2, courseCode: "CS101", courseName: "Programming & Problem Solving", facultyId: 1, dayOfWeek: "Wednesday", startTime: "09:00", endTime: "10:30", location: "CSG Lab A", cohort: "CS-A", isSubscribed: true },
+  { id: 3, courseCode: "CS102", courseName: "Data Structures and Algorithms", facultyId: 2, dayOfWeek: "Tuesday", startTime: "11:00", endTime: "12:30", location: "Lecture Hall 302", cohort: "CS-A", isSubscribed: true },
+  { id: 4, courseCode: "CS102", courseName: "Data Structures and Algorithms", facultyId: 2, dayOfWeek: "Thursday", startTime: "11:00", endTime: "12:30", location: "Lecture Hall 302", cohort: "CS-A", isSubscribed: true },
+  { id: 5, courseCode: "AD101", courseName: "Foundations of AI & Data Science", facultyId: 5, dayOfWeek: "Wednesday", startTime: "09:00", endTime: "10:30", location: "AI Lab 1", cohort: "CS-A", isSubscribed: false },
+  { id: 6, courseCode: "EC101", courseName: "Digital Logic & Microcontrollers", facultyId: 3, dayOfWeek: "Thursday", startTime: "11:00", endTime: "12:30", location: "ECE Seminar Hall", cohort: "CS-A", isSubscribed: false },
+  { id: 7, courseCode: "EE101", courseName: "Basic Electrical & Power Engineering", facultyId: 4, dayOfWeek: "Friday", startTime: "14:00", endTime: "15:30", location: "EEE Hall 102", cohort: "CS-A", isSubscribed: false }
 ];
 
 const DEFAULT_WIDGETS: DashboardWidget[] = [
-  { id: "news-ticker", title: "Latest News Ticker", description: "Horizontal campus announcement alerts", enabled: true },
+  { id: "news-ticker", title: "Latest News Ticker", description: "Horizontal Saranathan announcement alerts", enabled: true },
   { id: "welcome-banner", title: "Welcome & Checklist Progress", description: "Checklist progress metrics and welcome banner", enabled: true },
   { id: "quick-links", title: "Quick Links Panel", description: "Direct portal links to library, wifi and transport", enabled: true },
-  { id: "featured-event", title: "Featured Event Poster", description: "Nano Banana Welcome mixer and high-priority mixer highlights", enabled: true },
+  { id: "featured-event", title: "Featured Event Poster", description: "Saranathan TechXibitz & Hackathon highlights", enabled: true },
   { id: "campus-news", title: "Campus News & Announcements", description: "Recent university announcements and highlights", enabled: true },
   { id: "faculty-spotlight", title: "Faculty Spotlight", description: "Academic leaders and professor profile shortcuts", enabled: true },
   { id: "ai-recommendations", title: "AI Recommendations", description: "Tailored club and study suggestions via active preferences", enabled: true },
   { id: "upcoming-events", title: "Upcoming Campus Events", description: "Freshman orientation sessions and interactive schedules", enabled: true },
   { id: "student-clubs", title: "Student Clubs Hub", description: "Active developer societies and university organizations", enabled: true },
-  { id: "feedback-board", title: "Student Feedback Forum", description: "Submit thoughts directly to TCE academic deans", enabled: true },
+  { id: "feedback-board", title: "Student Feedback Forum", description: "Submit thoughts directly to Saranathan principal & deans", enabled: true },
 ];
 
 import {
@@ -140,11 +139,11 @@ import {
 
 const NewsTicker: React.FC = () => {
   const newsAlerts = [
-    "📢 Welcome freshmen! Orientation events and icebreaker socials are happening across campus now.",
-    "🥛 Banana Milkshake party starts tonight at 7:00 PM in the Sports Arena - don't miss out!",
-    "📶 High-speed Campus Wi-Fi 6E is now available; register your MAC address in the Checklist tab.",
-    "🔑 Hostel key pick-up is active at the Admin Block (Ground Floor) until 6:00 PM daily.",
-    "🧠 Get intelligent answers, walking paths, and office hours dynamically from the Gemini AI Chatbot!"
+    "🏛️ Saranathan College of Engineering - UGC Autonomous Institution, NAAC 'A+' Grade (TNEA Code 2615).",
+    "📢 Admission Helpdesk 2026-27: TNEA Counseling Code 2615. Contact +91-8489915214 / +91-8489915224.",
+    "📶 High-speed Campus Wi-Fi 6 & CSG GPU Lab access: Register your device MAC address in the Checklist tab.",
+    "🎓 Silver Jubilee Auditorium: TechXibitz & Hackathon 2026 registration is now open!",
+    "🧠 Ask the Gemini Intelligent Campus Assistant for walking directions, faculty office hours, and updates."
   ];
   const [index, setIndex] = useState(0);
 
