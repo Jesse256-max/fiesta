@@ -102,17 +102,20 @@ const DEFAULT_WIDGETS: DashboardWidget[] = [
 ];
 
 const DEFAULT_FACULTY: FacultyMember[] = [
+  // --- ACADEMIC LEADERSHIP ---
   {
     id: 1,
-    name: "Dr. D. Valavan, M.E., Ph.D.",
+    name: "Dr. D. Valavan, M.Tech., Ph.D.",
     designation: "Principal & Professor",
     department: "Academic Leadership",
     email: "principal@saranathan.ac.in",
     office: "Principal Office, Admin Block",
     hours: "Mon - Fri 10:00 AM - 05:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/valavan.jpg",
+    avatarUrl: "http://www.saranathan.ac.in/images/principal.jpg",
     researchInterests: "Thermal Fluid Systems, Renewable Energy Engineering"
   },
+
+  // --- COMPUTER SCIENCE & ENGINEERING (CSE) ---
   {
     id: 2,
     name: "Dr. V. Punitha, M.E., Ph.D.",
@@ -201,52 +204,220 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/karthik-cse.jpg",
     researchInterests: "Cyber Security, Embedded Hardware Security"
   },
+
+  // --- ELECTRONICS & COMMUNICATION ENGINEERING (ECE) ---
   {
     id: 10,
-    name: "Dr. M. Barathi, M.E., Ph.D.",
+    name: "Dr. M. Santhi, M.E., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Electronics & Communication Engineering",
-    email: "hodece@saranathan.ac.in",
-    office: "ECE Block - Room 105",
-    hours: "Tue, Thu 10:00 AM - 12:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/barathi-ece.jpg",
-    researchInterests: "Signal Processing, VLSI Systems, Wireless Sensor Networks"
+    email: "santhim@saranathan.ac.in",
+    office: "ECE Block - Room 101",
+    hours: "Mon, Wed 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/santhim.jpg",
+    researchInterests: "Signal Processing, Wireless Communications"
   },
   {
     id: 11,
-    name: "Dr. C. Krishnakumar, M.E., Ph.D.",
+    name: "Dr. V. Mohan, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Electronics & Communication Engineering",
+    email: "mohan-ece@saranathan.ac.in",
+    office: "ECE Block - Room 104",
+    hours: "Tue, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mohan-ece.jpg",
+    researchInterests: "VLSI Design, Embedded Systems"
+  },
+  {
+    id: 12,
+    name: "Dr. P. Shanmugapriya, M.Tech., Ph.D.",
+    designation: "Professor",
+    department: "Electronics & Communication Engineering",
+    email: "shanmugapriya-ece@saranathan.ac.in",
+    office: "ECE Block - Room 106",
+    hours: "Wed, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/shanmugapriya-ece.jpg",
+    researchInterests: "Antenna Systems, RF Communication"
+  },
+  {
+    id: 13,
+    name: "Dr. S.A. Arunmozhi, M.B.A, M.Tech., Ph.D.",
+    designation: "Associate Professor",
+    department: "Electronics & Communication Engineering",
+    email: "arunmozhi-ece@saranathan.ac.in",
+    office: "ECE Block - Room 108",
+    hours: "Mon, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/arunmozhi-ece.jpg",
+    researchInterests: "Sensor Networks, IoT System Architecture"
+  },
+  {
+    id: 14,
+    name: "Dr. K. Malaisamy, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Electronics & Communication Engineering",
+    email: "malaisamy-ece@saranathan.ac.in",
+    office: "ECE Block - Room 112",
+    hours: "Tue, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/malaisamy-ece.jpg",
+    researchInterests: "Microcontrollers, Image Processing"
+  },
+
+  // --- ELECTRICAL & ELECTRONICS ENGINEERING (EEE) ---
+  {
+    id: 15,
+    name: "Dr. C. Krishnakumar, M.Tech., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Electrical & Electronics Engineering",
-    email: "hodeee@saranathan.ac.in",
+    email: "krishnakumar-eee@saranathan.ac.in",
     office: "EEE Block - Room 102",
     hours: "Wed, Fri 11:00 AM - 01:00 PM",
     avatarUrl: "http://www.saranathan.ac.in/images/krishnakumar-eee.jpg",
     researchInterests: "Power Systems, Smart Grid, High Voltage Engineering"
   },
   {
-    id: 12,
-    name: "Dr. R. Sumathi, M.E., Ph.D.",
-    designation: "Professor & Head (HOD)",
-    department: "Artificial Intelligence & Data Science",
-    email: "hodaids@saranathan.ac.in",
-    office: "AI&DS Block - Room 302",
-    hours: "Mon, Thu 01:30 PM - 03:30 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/sumathi-aids.jpg",
-    researchInterests: "Machine Learning, Computer Vision, Big Analytics"
+    id: 16,
+    name: "Dr. M.V. Suganyadevi, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "suganyadevi-eee@saranathan.ac.in",
+    office: "EEE Block - Room 105",
+    hours: "Mon, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/suganyadevi-eee.jpg",
+    researchInterests: "Power Electronics, Renewable Energy Conversion"
   },
   {
-    id: 13,
-    name: "Dr. G. Mahesh, M.E., Ph.D.",
+    id: 17,
+    name: "Dr. D. Kalyana Kumar, M.Tech., Ph.D.",
+    designation: "Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "kalyanakumar-eee@saranathan.ac.in",
+    office: "EEE Block - Room 107",
+    hours: "Tue, Fri 10:30 AM - 12:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/kalyanakumar-eee.jpg",
+    researchInterests: "Electric Drives, Automation Controllers"
+  },
+  {
+    id: 18,
+    name: "Dr. M. Marimuthu, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Electrical & Electronics Engineering",
+    email: "marimuthu-eee@saranathan.ac.in",
+    office: "EEE Block - Room 110",
+    hours: "Wed, Thu 01:00 PM - 03:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/marimuthu-eee.jpg",
+    researchInterests: "Control Systems, Circuit Theory"
+  },
+
+  // --- ARTIFICIAL INTELLIGENCE & DATA SCIENCE (AI&DS) ---
+  {
+    id: 19,
+    name: "Dr. S. Ravimaran, M.E., Ph.D.",
     designation: "Professor & Head (HOD)",
+    department: "Artificial Intelligence & Data Science",
+    email: "ravimaran-aid@saranathan.ac.in",
+    office: "AI&DS Block - Room 301",
+    hours: "Mon, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/ravimaran-aid.jpg",
+    researchInterests: "Artificial Intelligence, Deep Learning, Big Analytics"
+  },
+  {
+    id: 20,
+    name: "Dr. P.D. Sheba Kezia Malarchelvi, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Artificial Intelligence & Data Science",
+    email: "pdsheba-cse@saranathan.ac.in",
+    office: "AI&DS Block - Room 304",
+    hours: "Tue, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/pdsheba-cse.jpg",
+    researchInterests: "Machine Learning, Natural Language Processing"
+  },
+  {
+    id: 21,
+    name: "Dr. A. Kavitha, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Artificial Intelligence & Data Science",
+    email: "kavitha7185@saranathan.ac.in",
+    office: "AI&DS Block - Room 306",
+    hours: "Wed, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/kavitha7185.jpg",
+    researchInterests: "Data Analytics, Neural Networks"
+  },
+  {
+    id: 22,
+    name: "Ms. A. Sridevi, M.E.",
+    designation: "Assistant Professor",
+    department: "Artificial Intelligence & Data Science",
+    email: "sridevi-aid@saranathan.ac.in",
+    office: "AI&DS Block - Room 310",
+    hours: "Mon, Wed 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sridevi-aid.jpg",
+    researchInterests: "Data Structures, Python for AI"
+  },
+
+  // --- MECHANICAL ENGINEERING (MECH) ---
+  {
+    id: 23,
+    name: "Dr. R. Rekha, M.Tech., Ph.D.",
+    designation: "Professor & Head i/c (HOD)",
     department: "Mechanical Engineering",
-    email: "hodmech@saranathan.ac.in",
+    email: "rekha-mech@saranathan.ac.in",
     office: "Mechanical Block - Room 101",
     hours: "Tue, Fri 02:00 PM - 04:00 PM",
-    avatarUrl: "http://www.saranathan.ac.in/images/mahesh-mech.jpg",
+    avatarUrl: "http://www.saranathan.ac.in/images/rekha-mech.jpg",
     researchInterests: "Additive Manufacturing, Finite Element Analysis"
   },
   {
-    id: 14,
+    id: 24,
+    name: "Dr. N. Baskar, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Mechanical Engineering",
+    email: "baskar-mech@saranathan.ac.in",
+    office: "Mechanical Block - Room 105",
+    hours: "Mon, Thu 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/baskar-mech.jpg",
+    researchInterests: "CAM, Computer Integrated Manufacturing"
+  },
+  {
+    id: 25,
+    name: "Dr. M.R. Anantha Padmanaban, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Mechanical Engineering",
+    email: "mrpadmanaban-mech@saranathan.ac.in",
+    office: "Mechanical Block - Room 108",
+    hours: "Wed, Fri 01:00 PM - 03:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mrpadmanaban-mech.jpg",
+    researchInterests: "Heat Transfer, Thermodynamics"
+  },
+
+  // --- CIVIL ENGINEERING (CE) ---
+  {
+    id: 26,
+    name: "Dr. G.V. Soumya, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Civil Engineering",
+    email: "hodcivil@saranathan.ac.in",
+    office: "Civil Block - Room 101",
+    hours: "Mon, Wed 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/soumya-civil.jpg",
+    researchInterests: "Structural Engineering, Concrete Technology"
+  },
+
+  // --- COMPUTER SCIENCE & BUSINESS SYSTEM (CSBS) ---
+  {
+    id: 27,
+    name: "Dr. P. Dinesh Kumar, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Computer Science & Business System",
+    email: "hodcsbs@saranathan.ac.in",
+    office: "CSBS Block - Room 201",
+    hours: "Tue, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/dineshkumar-csbs.jpg",
+    researchInterests: "Enterprise Software, Business Analytics"
+  },
+
+  // --- INSTRUMENTATION & CONTROL ENGINEERING (ICE) ---
+  {
+    id: 28,
     name: "Dr. S. M. Girirajkumar, M.E., Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Instrumentation & Control Engineering",
@@ -256,8 +427,23 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     avatarUrl: "http://www.saranathan.ac.in/images/giriraj-ice.jpg",
     researchInterests: "Process Control, E-Yantra Drone Robotics"
   },
+
+  // --- INFORMATION TECHNOLOGY (IT) ---
   {
-    id: 15,
+    id: 29,
+    name: "Dr. M. Shanmugavalli, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Information Technology",
+    email: "hodit@saranathan.ac.in",
+    office: "IT Block - Room 301",
+    hours: "Tue, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/shanmugavalli-it.jpg",
+    researchInterests: "Cloud Infrastructure, Cyber Forensics"
+  },
+
+  // --- MANAGEMENT STUDIES (MBA) ---
+  {
+    id: 30,
     name: "Dr. K. Rajkumar, Ph.D.",
     designation: "Professor & Head (HOD)",
     department: "Management Studies (MBA)",
@@ -266,6 +452,30 @@ const DEFAULT_FACULTY: FacultyMember[] = [
     hours: "Mon, Thu 02:00 PM - 04:00 PM",
     avatarUrl: "http://www.saranathan.ac.in/images/rajkumar-mba.jpg",
     researchInterests: "Financial Markets, Business Analytics, Entrepreneurship"
+  },
+
+  // --- SCIENCE & HUMANITIES ---
+  {
+    id: 31,
+    name: "Dr. N. Bhuvaneswari, M.Sc., Ph.D.",
+    designation: "Professor & Head (Mathematics)",
+    department: "Science & Humanities",
+    email: "hodmaths@saranathan.ac.in",
+    office: "S&H Block - Room 102",
+    hours: "Mon, Wed 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/bhuvaneswari-maths.jpg",
+    researchInterests: "Applied Mathematics, Numerical Methods"
+  },
+  {
+    id: 32,
+    name: "Dr. L. Vinoth, M.Sc., Ph.D.",
+    designation: "Professor & Head (Physics)",
+    department: "Science & Humanities",
+    email: "hodphysics@saranathan.ac.in",
+    office: "S&H Block - Room 105",
+    hours: "Tue, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/vinoth-physics.jpg",
+    researchInterests: "Optoelectronics, Nanomaterials"
   }
 ];
 
