@@ -101,6 +101,296 @@ const DEFAULT_WIDGETS: DashboardWidget[] = [
   { id: "feedback-board", title: "Student Feedback Forum", description: "Submit thoughts directly to Saranathan principal & deans", enabled: true },
 ];
 
+const DEFAULT_FACULTY: FacultyMember[] = [
+  {
+    id: 1,
+    name: "Dr. D. Valavan, M.E., Ph.D.",
+    designation: "Principal & Professor",
+    department: "Academic Leadership",
+    email: "principal@saranathan.ac.in",
+    office: "Principal Office, Admin Block",
+    hours: "Mon - Fri 10:00 AM - 05:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/valavan.jpg",
+    researchInterests: "Thermal Fluid Systems, Renewable Energy Engineering"
+  },
+  {
+    id: 2,
+    name: "Dr. V. Punitha, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Computer Science & Engineering",
+    email: "punitha-it@saranathan.ac.in",
+    office: "CS Block - Room 201",
+    hours: "Mon, Wed 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/punitha-it.jpg",
+    researchInterests: "Information Security, Cloud Computing, Wireless Networks"
+  },
+  {
+    id: 3,
+    name: "Dr. R. Senthamil Selvi, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Computer Science & Engineering",
+    email: "senthamilselvi-cse@saranathan.ac.in",
+    office: "CS Block - Room 204",
+    hours: "Tue, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/senthamilselvi-cse.jpg",
+    researchInterests: "High Performance Computing, Parallel Processing"
+  },
+  {
+    id: 4,
+    name: "Dr. S. Mohana, M.E., Ph.D.",
+    designation: "Professor",
+    department: "Computer Science & Engineering",
+    email: "mohana-cse@saranathan.ac.in",
+    office: "CS Block - Room 208",
+    hours: "Wed, Fri 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mohana-cse.jpg",
+    researchInterests: "Machine Learning, Pattern Recognition, Computer Vision"
+  },
+  {
+    id: 5,
+    name: "Dr. K.S. Chandrasekaran, M.E., Ph.D.",
+    designation: "Associate Professor",
+    department: "Computer Science & Engineering",
+    email: "chandrasekaran-cse@saranathan.ac.in",
+    office: "CS Block - Room 210",
+    hours: "Mon, Thu 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/chandrasekaran-cse.jpg",
+    researchInterests: "Network Security, Cryptography, Wireless Ad-hoc Networks"
+  },
+  {
+    id: 6,
+    name: "Dr. S. Rajalakshmi, M.E., Ph.D.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "rajalakshmi7103@saranathan.ac.in",
+    office: "CS Block - Room 212",
+    hours: "Tue, Fri 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rajalakshmi7103.jpg",
+    researchInterests: "Artificial Intelligence, Deep Learning, Natural Language Processing"
+  },
+  {
+    id: 7,
+    name: "Mr. D. Boobala Muralitharan, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "boobala-cse@saranathan.ac.in",
+    office: "CS Block - Room 215",
+    hours: "Mon, Wed 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/boobala-cse.jpg",
+    researchInterests: "Full Stack Web Architecture, Cloud Microservices"
+  },
+  {
+    id: 8,
+    name: "Ms. R. Sugantha Lakshmi, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "suganthalakshmi7127@saranathan.ac.in",
+    office: "CS Block - Room 218",
+    hours: "Thu, Fri 09:30 AM - 11:30 AM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sugantha%20lakshmi7127.jpg",
+    researchInterests: "Database Systems, NoSQL, Distributed Storage"
+  },
+  {
+    id: 9,
+    name: "Mr. R. Karthik, M.E.",
+    designation: "Assistant Professor",
+    department: "Computer Science & Engineering",
+    email: "karthik-cse@saranathan.ac.in",
+    office: "CS Block - Room 220",
+    hours: "Tue, Thu 02:30 PM - 04:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/karthik-cse.jpg",
+    researchInterests: "Cyber Security, Embedded Hardware Security"
+  },
+  {
+    id: 10,
+    name: "Dr. M. Barathi, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Electronics & Communication Engineering",
+    email: "hodece@saranathan.ac.in",
+    office: "ECE Block - Room 105",
+    hours: "Tue, Thu 10:00 AM - 12:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/barathi-ece.jpg",
+    researchInterests: "Signal Processing, VLSI Systems, Wireless Sensor Networks"
+  },
+  {
+    id: 11,
+    name: "Dr. C. Krishnakumar, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Electrical & Electronics Engineering",
+    email: "hodeee@saranathan.ac.in",
+    office: "EEE Block - Room 102",
+    hours: "Wed, Fri 11:00 AM - 01:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/krishnakumar-eee.jpg",
+    researchInterests: "Power Systems, Smart Grid, High Voltage Engineering"
+  },
+  {
+    id: 12,
+    name: "Dr. R. Sumathi, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Artificial Intelligence & Data Science",
+    email: "hodaids@saranathan.ac.in",
+    office: "AI&DS Block - Room 302",
+    hours: "Mon, Thu 01:30 PM - 03:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/sumathi-aids.jpg",
+    researchInterests: "Machine Learning, Computer Vision, Big Analytics"
+  },
+  {
+    id: 13,
+    name: "Dr. G. Mahesh, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Mechanical Engineering",
+    email: "hodmech@saranathan.ac.in",
+    office: "Mechanical Block - Room 101",
+    hours: "Tue, Fri 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/mahesh-mech.jpg",
+    researchInterests: "Additive Manufacturing, Finite Element Analysis"
+  },
+  {
+    id: 14,
+    name: "Dr. S. M. Girirajkumar, M.E., Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Instrumentation & Control Engineering",
+    email: "hodice@saranathan.ac.in",
+    office: "ICE Block - Room 104",
+    hours: "Mon, Wed 10:30 AM - 12:30 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/giriraj-ice.jpg",
+    researchInterests: "Process Control, E-Yantra Drone Robotics"
+  },
+  {
+    id: 15,
+    name: "Dr. K. Rajkumar, Ph.D.",
+    designation: "Professor & Head (HOD)",
+    department: "Management Studies (MBA)",
+    email: "hodmba@saranathan.ac.in",
+    office: "MBA Block - Room 401",
+    hours: "Mon, Thu 02:00 PM - 04:00 PM",
+    avatarUrl: "http://www.saranathan.ac.in/images/rajkumar-mba.jpg",
+    researchInterests: "Financial Markets, Business Analytics, Entrepreneurship"
+  }
+];
+
+const DEFAULT_EVENTS: (CampusEvent & { registered?: boolean })[] = [
+  {
+    id: 1,
+    title: "Saranathan TechXibitz & Hackathon 2026",
+    description: "Annual 24-hour campus hackathon & project expo organized by Saranathan IEEE Student Branch & CSE Department.",
+    date: "2026-08-18",
+    time: "09:00 AM",
+    location: "Silver Jubilee Auditorium",
+    category: "Technical",
+    organizer: "Dept. of CSE & IEEE Student Branch",
+    capacity: 200,
+    imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    registered: false,
+    createdAt: "2026-07-24"
+  },
+  {
+    id: 2,
+    title: "Sara Cultural Fest & Fine Arts 2026",
+    description: "Inter-departmental music, dance, and drama festival celebrating Saranathan student talent.",
+    date: "2026-09-05",
+    time: "04:30 PM",
+    location: "Open Air Theatre (OAT)",
+    category: "Cultural",
+    organizer: "Sara Fine Arts Committee",
+    capacity: 600,
+    imageUrl: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    registered: false,
+    createdAt: "2026-07-24"
+  },
+  {
+    id: 3,
+    title: "AI & Data Science National Seminar",
+    description: "Guest lecture and workshop on Generative AI, Robotics & IoT hosted by AI&DS and E-Yantra Labs.",
+    date: "2026-08-25",
+    time: "10:00 AM",
+    location: "CSG Seminar Hall",
+    category: "Academic",
+    organizer: "Dept. of AI&DS & E-Yantra Lab",
+    capacity: 150,
+    imageUrl: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&fit=crop&w=800&q=80",
+    registered: false,
+    createdAt: "2026-07-24"
+  }
+];
+
+const DEFAULT_CLUBS: Club[] = [
+  {
+    id: 1,
+    name: "Saranathan IEEE Student Branch",
+    category: "Technology",
+    description: "Official IEEE student society organizing technical workshops, paper presentations, and coding contests.",
+    logoUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=300&q=80",
+    president: "Dr. M. Barathi",
+    contactEmail: "ieee@saranathan.ac.in",
+    membershipStatus: "none",
+    createdAt: "2026-07-24"
+  },
+  {
+    id: 2,
+    name: "Infosys Campus Connect & Coding Society",
+    category: "Software & AI",
+    description: "Student developer society training engineering aspirants in full-stack web, Python, and algorithm design.",
+    logoUrl: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+    president: "Dr. V. Punitha",
+    contactEmail: "campusconnect@saranathan.ac.in",
+    membershipStatus: "none",
+    createdAt: "2026-07-24"
+  },
+  {
+    id: 3,
+    name: "E-Yantra Robotics & Embedded Systems Club",
+    category: "Robotics",
+    description: "IIT Bombay backed robotics laboratory building autonomous rovers, IoT sensors, and automation systems.",
+    logoUrl: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=300&q=80",
+    president: "Dr. S. M. Girirajkumar",
+    contactEmail: "eyantra@saranathan.ac.in",
+    membershipStatus: "none",
+    createdAt: "2026-07-24"
+  },
+  {
+    id: 4,
+    name: "Entrepreneurship Development Cell (EDC)",
+    category: "Innovation & Startup",
+    description: "Promoting student startup ideas, patent filing assistance, and business model pitching events.",
+    logoUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80",
+    president: "Dr. K. Rajkumar",
+    contactEmail: "edc@saranathan.ac.in",
+    membershipStatus: "none",
+    createdAt: "2026-07-24"
+  }
+];
+
+const DEFAULT_NEWS: any[] = [
+  {
+    id: 1,
+    title: "UGC Conferred Autonomous Status for 10 Years",
+    content: "Saranathan College of Engineering has been granted 10-year UGC Autonomous Status starting from the academic year 2024-25.",
+    timestamp: "2026-07-20T10:00:00Z",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    category: "Announcements",
+    author: "Office of the Principal"
+  },
+  {
+    id: 2,
+    title: "All 7 Eligible Engineering Branches Accredited by NBA",
+    content: "All seven eligible UG departments (CSE, ECE, EEE, ICE, IT, MECH, CIVIL) have been reaccredited by NBA through 2028.",
+    timestamp: "2026-07-22T14:30:00Z",
+    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
+    category: "Academic",
+    author: "IQAC Cell"
+  },
+  {
+    id: 3,
+    title: "Saranathan NAAC 'A+' Grade Conferred",
+    content: "The National Assessment and Accreditation Council (NAAC) awarded Saranathan College of Engineering with an A+ Grade for academic excellence.",
+    timestamp: "2026-07-15T09:00:00Z",
+    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    category: "Accreditation",
+    author: "Secretary's Desk"
+  }
+];
+
 import {
   Sparkles,
   Calendar,
@@ -1108,12 +1398,12 @@ const FreshersPortalMain: React.FC = () => {
     setTheme(prev => prev === "dark" ? "light" : "dark");
   };
 
-  // States for API data
-  const [events, setEvents] = useState<CampusEvent[]>([]);
-  const [clubs, setClubs] = useState<Club[]>([]);
-  const [faculty, setFaculty] = useState<FacultyMember[]>([]);
-  const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
-  const [timetable, setTimetable] = useState<TimetableCourse[]>([]);
+  // States for API data initialized with Saranathan defaults
+  const [events, setEvents] = useState<CampusEvent[]>(DEFAULT_EVENTS as any);
+  const [clubs, setClubs] = useState<Club[]>(DEFAULT_CLUBS as any);
+  const [faculty, setFaculty] = useState<FacultyMember[]>(DEFAULT_FACULTY);
+  const [checklist, setChecklist] = useState<ChecklistItem[]>(DEFAULT_CHECKLIST);
+  const [timetable, setTimetable] = useState<TimetableCourse[]>(DEFAULT_TIMETABLE);
 
   // Loading states
   const [loadingData, setLoadingData] = useState(true);
@@ -1130,14 +1420,23 @@ const FreshersPortalMain: React.FC = () => {
 
       // Parallelize fetches for maximum performance (lag-free)
       const [resEvents, resClubs, resFaculty] = await Promise.all([
-        fetch("/api/events", { headers }),
-        fetch("/api/clubs", { headers }),
-        fetch("/api/faculty")
+        fetch("/api/events", { headers }).catch(() => null),
+        fetch("/api/clubs", { headers }).catch(() => null),
+        fetch("/api/faculty").catch(() => null)
       ]);
 
-      if (resEvents.ok) setEvents(await resEvents.json());
-      if (resClubs.ok) setClubs(await resClubs.json());
-      if (resFaculty.ok) setFaculty(await resFaculty.json());
+      if (resEvents && resEvents.ok) {
+        const evData = await resEvents.json();
+        if (Array.isArray(evData) && evData.length > 0) setEvents(evData);
+      }
+      if (resClubs && resClubs.ok) {
+        const clData = await resClubs.json();
+        if (Array.isArray(clData) && clData.length > 0) setClubs(clData);
+      }
+      if (resFaculty && resFaculty.ok) {
+        const facData = await resFaculty.json();
+        if (Array.isArray(facData) && facData.length > 0) setFaculty(facData);
+      }
 
       // Authenticated-only fetches
       if (token) {

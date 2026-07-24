@@ -189,9 +189,21 @@ export const FacultyList: React.FC<FacultyListProps> = ({ faculty }) => {
                         )}
                       </AnimatePresence>
 
-                      {/* Avatar Placeholder */}
-                      <div className="w-20 h-20 rounded-full border text-white shrink-0 flex items-center justify-center font-display font-bold text-2xl shadow-xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 border-amber-500/50">
-                        {hod.name.split(" ").pop()?.charAt(0)}
+                      {/* Avatar Photo / Fallback */}
+                      <div className="w-20 h-20 rounded-full border text-white shrink-0 overflow-hidden shadow-xl bg-zinc-900 border-amber-500/50 flex items-center justify-center">
+                        {hod.avatarUrl ? (
+                          <img 
+                            src={hod.avatarUrl} 
+                            alt={hod.name} 
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        ) : null}
+                        <div className="w-full h-full flex items-center justify-center font-display font-bold text-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-600">
+                          {hod.name.split(" ").pop()?.charAt(0)}
+                        </div>
                       </div>
 
                       {/* Core Info */}
@@ -318,12 +330,24 @@ export const FacultyList: React.FC<FacultyListProps> = ({ faculty }) => {
                           )}
                         </AnimatePresence>
 
-                        <div className={`w-14 h-14 rounded-full border text-white shrink-0 flex items-center justify-center font-display font-bold text-lg shadow-inner ${
-                          isLeader 
-                            ? "bg-gradient-to-br from-amber-400 to-orange-600 border-amber-500/50"
-                            : "bg-gradient-to-br from-indigo-500 to-purple-600 border-zinc-700"
-                        }`}>
-                          {f.name.split(" ").pop()?.charAt(0)}
+                        <div className="w-14 h-14 rounded-full border text-white shrink-0 overflow-hidden shadow-inner bg-zinc-900 border-zinc-700 flex items-center justify-center relative">
+                          {f.avatarUrl ? (
+                            <img 
+                              src={f.avatarUrl} 
+                              alt={f.name} 
+                              className="w-full h-full object-cover relative z-10"
+                              onError={(e) => {
+                                (e.target as HTMLElement).style.display = 'none';
+                              }}
+                            />
+                          ) : null}
+                          <div className={`absolute inset-0 flex items-center justify-center font-display font-bold text-lg ${
+                            isLeader 
+                              ? "bg-gradient-to-br from-amber-400 to-orange-600"
+                              : "bg-gradient-to-br from-indigo-500 to-purple-600"
+                          }`}>
+                            {f.name.split(" ").pop()?.charAt(0)}
+                          </div>
                         </div>
 
                         <div className="flex-1 min-w-0 space-y-2">
