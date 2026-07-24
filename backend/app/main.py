@@ -147,7 +147,7 @@ async def lifespan(app: FastAPI):
                 Faculty(
                     name="Dr. D. Valavan",
                     designation="Principal & Professor",
-                    department="Mechanical Engineering",
+                    department="Academic Leadership",
                     email="principal@saranathan.ac.in",
                     office="Principal Office, Admin Block",
                     office_hours="Mon - Fri 10:00 AM - 05:00 PM",
@@ -156,15 +156,92 @@ async def lifespan(app: FastAPI):
                     research_interests="Thermal Fluid Systems, Renewable Energy Engineering"
                 ),
                 Faculty(
-                    name="Dr. S.A. Sahaaya Arul Mary",
+                    name="Dr. V. Punitha",
                     designation="Professor & Head",
                     department="Computer Science & Engineering",
-                    email="hodcse@saranathan.ac.in",
+                    email="punitha-it@saranathan.ac.in",
                     office="CS Block - Room 201",
                     office_hours="Mon, Wed 02:00 PM - 04:00 PM",
-                    courses_taught="CS101 Intro to CS, CS302 Distributed Systems",
+                    courses_taught="CS101 Intro to CS, Information Security",
                     avatar_url="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Cloud Computing, Artificial Intelligence, Data Mining"
+                    research_interests="Information Security, Cloud Computing, Wireless Networks"
+                ),
+                Faculty(
+                    name="Dr. R. Senthamil Selvi",
+                    designation="Professor",
+                    department="Computer Science & Engineering",
+                    email="senthamilselvi-cse@saranathan.ac.in",
+                    office="CS Block - Room 204",
+                    office_hours="Tue, Thu 01:30 PM - 03:30 PM",
+                    courses_taught="CS302 High Performance Computing, Data Mining",
+                    avatar_url="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
+                    research_interests="High Performance Computing, Parallel Processing"
+                ),
+                Faculty(
+                    name="Dr. S. Mohana",
+                    designation="Professor",
+                    department="Computer Science & Engineering",
+                    email="mohana-cse@saranathan.ac.in",
+                    office="CS Block - Room 208",
+                    office_hours="Wed, Fri 10:00 AM - 12:00 PM",
+                    courses_taught="CS405 Machine Learning, Computer Vision",
+                    avatar_url="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Machine Learning, Pattern Recognition, Computer Vision"
+                ),
+                Faculty(
+                    name="Dr. K.S. Chandrasekaran",
+                    designation="Associate Professor",
+                    department="Computer Science & Engineering",
+                    email="chandrasekaran-cse@saranathan.ac.in",
+                    office="CS Block - Room 210",
+                    office_hours="Mon, Thu 11:00 AM - 01:00 PM",
+                    courses_taught="Network Security, Operating Systems",
+                    avatar_url="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Network Security, Cryptography, Wireless Ad-hoc Networks"
+                ),
+                Faculty(
+                    name="Dr. S. Rajalakshmi",
+                    designation="Assistant Professor",
+                    department="Computer Science & Engineering",
+                    email="rajalakshmi7103@saranathan.ac.in",
+                    office="CS Block - Room 212",
+                    office_hours="Tue, Fri 02:00 PM - 04:00 PM",
+                    courses_taught="Artificial Intelligence, Neural Networks",
+                    avatar_url="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Artificial Intelligence, Deep Learning, Natural Language Processing"
+                ),
+                Faculty(
+                    name="Mr. D. Boobala Muralitharan",
+                    designation="Assistant Professor",
+                    department="Computer Science & Engineering",
+                    email="boobala-cse@saranathan.ac.in",
+                    office="CS Block - Room 215",
+                    office_hours="Mon, Wed 11:00 AM - 01:00 PM",
+                    courses_taught="Software Engineering, Web Technologies",
+                    avatar_url="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Full Stack Web Architecture, Cloud Microservices"
+                ),
+                Faculty(
+                    name="Ms. R. Sugantha Lakshmi",
+                    designation="Assistant Professor",
+                    department="Computer Science & Engineering",
+                    email="suganthalakshmi7127@saranathan.ac.in",
+                    office="CS Block - Room 218",
+                    office_hours="Thu, Fri 09:30 AM - 11:30 AM",
+                    courses_taught="Database Management Systems, Big Data",
+                    avatar_url="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Database Systems, NoSQL, Distributed Storage"
+                ),
+                Faculty(
+                    name="Mr. R. Karthik",
+                    designation="Assistant Professor",
+                    department="Computer Science & Engineering",
+                    email="karthik-cse@saranathan.ac.in",
+                    office="CS Block - Room 220",
+                    office_hours="Tue, Thu 02:30 PM - 04:30 PM",
+                    courses_taught="Cybersecurity, Microprocessors & Interfacing",
+                    avatar_url="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Cyber Security, Embedded Hardware Security"
                 ),
                 Faculty(
                     name="Dr. M. Barathi",
@@ -175,7 +252,7 @@ async def lifespan(app: FastAPI):
                     office_hours="Tue, Thu 10:00 AM - 12:00 PM",
                     courses_taught="EC101 Digital Electronics, Microcontrollers",
                     avatar_url="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Signal Processing, Wireless Sensor Networks"
+                    research_interests="Signal Processing, VLSI Systems, Wireless Sensor Networks"
                 ),
                 Faculty(
                     name="Dr. C. Krishnakumar",
@@ -189,17 +266,6 @@ async def lifespan(app: FastAPI):
                     research_interests="Power Systems, Smart Grid, High Voltage Engineering"
                 ),
                 Faculty(
-                    name="Dr. R. Sumathi",
-                    designation="Professor & Head",
-                    department="Artificial Intelligence & Data Science",
-                    email="hodaids@saranathan.ac.in",
-                    office="AI&DS Block - Room 302",
-                    office_hours="Mon, Thu 01:30 PM - 03:30 PM",
-                    courses_taught="AD101 Data Science Foundations, Deep Learning",
-                    avatar_url="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Machine Learning, Computer Vision, Big Analytics"
-                ),
-                Faculty(
                     name="Dr. G. Mahesh",
                     designation="Professor & Head",
                     department="Mechanical Engineering",
@@ -208,7 +274,29 @@ async def lifespan(app: FastAPI):
                     office_hours="Tue, Fri 02:00 PM - 04:00 PM",
                     courses_taught="ME101 Engineering Graphics, CAD/CAM",
                     avatar_url="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-                    research_interests="Additive Manufacturing, Robotics, Finite Element Analysis"
+                    research_interests="Additive Manufacturing, Finite Element Analysis"
+                ),
+                Faculty(
+                    name="Dr. S. M. Girirajkumar",
+                    designation="Professor & Head",
+                    department="Instrumentation & Control Engineering",
+                    email="hodice@saranathan.ac.in",
+                    office="ICE Block - Room 104",
+                    office_hours="Mon, Wed 10:30 AM - 12:30 PM",
+                    courses_taught="Process Control, Industrial Automation",
+                    avatar_url="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Process Control, E-Yantra Drone Robotics"
+                ),
+                Faculty(
+                    name="Dr. K. Rajkumar",
+                    designation="Professor & Head",
+                    department="Management Studies (MBA)",
+                    email="hodmba@saranathan.ac.in",
+                    office="MBA Block - Room 401",
+                    office_hours="Mon, Thu 02:00 PM - 04:00 PM",
+                    courses_taught="Financial Management, Entrepreneurship & Startups",
+                    avatar_url="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80",
+                    research_interests="Financial Markets, Business Analytics, Entrepreneurship"
                 )
             ]
             session.add_all(seed_faculty)
